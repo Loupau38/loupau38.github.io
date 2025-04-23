@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "Barlow";
+    src: url("/assets/fonts/Barlow-Regular.ttf");
+}
+
+:root {
+    --main-color : white;
+    --accent-color: blue;
+}
+
+body {
+    background: rgb(50, 50, 50);
+    margin: 0;
+    font-family: "Barlow", sans-serif;
+    color: var(--main-color);
+}
+
+h1 {
+    margin-left: 10%;
+}
+
+.mono-space-num {
+    font-variant-numeric: tabular-nums;
+}
+
+.no-link-style {
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.content-box {
+    background: rgb(100, 100, 100);
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    transition: 0.2s;
+    font-size: 1.25em;
+}
+
+.content-box h2 {
+    width: fit-content;
+    margin: 0.5em auto;
+    font-size: 1.4em;
+}
+
+.content-box p {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.clickable-content-box:hover {
+    background: rgb(125, 125, 125);
+}
+
+.link {
+    text-decoration: underline;
+    color: rgb(0, 0, 200);
+    transition: 0.2s;
+}
+
+.link:hover {
+    color: var(--main-color);
+}
+
+#backButton {
+    text-decoration: none;
+    float: left;
+    color: var(--main-color);
+    transition: 0.2s;
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+#backButton:hover {
+    color: var(--accent-color);
+}

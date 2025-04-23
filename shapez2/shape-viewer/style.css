@@ -1,0 +1,42 @@
+.centered > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+#shapeCode {
+    margin-top: 50px;
+    margin-bottom: 5px;
+    width: 30%;
+    height: 30px;
+}
+
+#errorMsg {
+    color: limegreen;
+    margin-top: 10px;
+}
+
+#errorMsg[has-error] {
+    color: red;
+}
+
+canvas {
+    margin-top: 30px;
+}
+
+input, canvas, select {
+    border: rgb(127, 127, 127) 2px solid;
+    border-radius: 5px;
+}
+
+input, select {
+    font-family: monospace;
+    outline: unset;
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent-color);
+}

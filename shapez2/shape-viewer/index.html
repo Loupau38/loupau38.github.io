@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapez 2 Shape Viewer</title>
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="/assets/scripts/allPages.js" defer></script>
+    <script src="./shapeViewerPage.js" defer></script>
+</head>
+<body>
+    <div class="centered">
+        <h1>Shapez 2 Shape Viewer</h1>
+        <input type="text" id="shapeCode" value="CuCuCuCu" placeholder="Shape Code">
+        <div>
+            <select id="shapesConfig">
+                <option value="quad">Quad Shapes</option>
+                <option value="hex">Hexagonal Shapes</option>
+            </select>
+            <select id="colorMode">
+                <option value="rgb">RGB</option>
+                <option value="ryb">RYB</option>
+                <option value="cmyk">CMYK</option>
+            </select>
+        </div>
+        <div id="errorMsg">...</div>
+        <canvas width="100" height="100" id="canvas"></canvas>
+    </div>
+</body>
+</html>
