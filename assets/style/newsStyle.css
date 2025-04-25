@@ -1,0 +1,72 @@
+.newsItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsHeader {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px var(--main-color) solid;
+    padding-bottom: 5px;
+}
+
+.newsId {
+    flex-grow: 1;
+}
+
+.newsContent {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px var(--main-color) solid;
+}
+
+.newsMessages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.newsMessage {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px var(--main-color) solid;
+    padding-right: 5px;
+}
+
+.msgLang {
+    flex-shrink: 0;
+    border-right: 1px var(--main-color) solid;
+    padding-right: 5px;
+    margin-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.msgText {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.newsRestrict {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px var(--main-color) solid;
+    padding-left: 5px;
+}
+
+.langsOnly, .versionsOnly {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsFooter {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+}
+
+.newsLink {
+    flex-grow: 1;
+}
