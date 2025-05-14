@@ -5,7 +5,7 @@ fetch("https://static-api.shapez2.com/news.json").then((res) => {
 });
 
 function parseMessageText(text) {
-    text = text.replace("<b>","<strong>").replace("</b>","</strong>");
+    text = text.replaceAll("<b>","<strong>").replaceAll("</b>","</strong>");
     colorSplits = text.split("<color=");
     newText = colorSplits[0];
     colorSplits.slice(1).forEach((split) => {
@@ -16,6 +16,8 @@ function parseMessageText(text) {
 }
 
 function displayContent(rawContent) {
+
+    document.getElementById("loading-text").remove();
 
     const news = rawContent["News"];
 
