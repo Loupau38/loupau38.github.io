@@ -54,13 +54,13 @@ h1 {
     background: rgb(125, 125, 125);
 }
 
-.link {
+a {
     text-decoration: underline;
-    color: rgb(0, 0, 200);
+    color: rgb(0, 150, 255);
     transition: 0.2s;
 }
 
-.link:hover {
+a:hover {
     color: var(--main-color);
 }
 

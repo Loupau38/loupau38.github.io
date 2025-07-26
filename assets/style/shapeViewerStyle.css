@@ -26,7 +26,7 @@ canvas {
 }
 
 input, canvas, select {
-    border: rgb(127, 127, 127) 2px solid;
+    border: 2px solid rgb(127, 127, 127);
     border-radius: 5px;
 }
 

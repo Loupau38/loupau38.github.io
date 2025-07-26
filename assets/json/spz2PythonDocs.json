@@ -1,0 +1,3156 @@
+[
+    {
+        "n": "blueprints",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "PREFIX",
+                "t": "Literal[\"SHAPEZ2\"]",
+                "d": "The blueprint code prefix"
+            },
+            {
+                "n": "SEPARATOR",
+                "t": "Literal[\"-\"]",
+                "d": "The separator between the different blueprint code sections"
+            },
+            {
+                "n": "SUFFIX",
+                "t": "Literal[\"$\"]",
+                "d": "The blueprint code suffix"
+            },
+            {
+                "n": "ISLAND_ROTATION_CENTER",
+                "t": "shapez2.utils.FloatPos",
+                "d": "The center of an island tile, used for rotations"
+            },
+            {
+                "n": "NUM_BP_ICONS",
+                "t": "Literal[4]",
+                "d": "The number of blueprint icons displayed ingame"
+            },
+            {
+                "n": "BlueprintError",
+                "t": "class",
+                "p": "Exception",
+                "d": "The error raised for all blueprint-related errors"
+            },
+            {
+                "n": "BlueprintType",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of a blueprint",
+                "attrs": [
+                    {
+                        "n": "building",
+                        "t": "Literal[\"Building\"]",
+                        "d": "A building blueprint"
+                    },
+                    {
+                        "n": "island",
+                        "t": "Literal[\"Island\"]",
+                        "d": "An island blueprint"
+                    }
+                ]
+            },
+            {
+                "n": "BlueprintIconType",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of a blueprint icon",
+                "attrs": [
+                    {
+                        "n": "empty",
+                        "t": "Literal[\"empty\"]",
+                        "d": "An empty icon"
+                    },
+                    {
+                        "n": "icon",
+                        "t": "Literal[\"icon\"]",
+                        "d": "A regular icon"
+                    },
+                    {
+                        "n": "shape",
+                        "t": "Literal[\"shape\"]",
+                        "d": "A shape icon"
+                    }
+                ]
+            },
+            {
+                "n": "BlueprintIcon",
+                "t": "class",
+                "d": "Represents a blueprint icon",
+                "params": [
+                    {
+                        "n": "type",
+                        "t": "shapez2.blueprints.BlueprintIconType",
+                        "d": "The type of blueprint icon"
+                    },
+                    "*",
+                    {
+                        "n": "icon",
+                        "t": [
+                            "str",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The icon ID if it's a regular icon"
+                    },
+                    {
+                        "n": "shape",
+                        "t": [
+                            "shapez2.gameObjects.Shape",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The shape if its a shape icon"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "type",
+                        "t": "shapez2.blueprints.BlueprintIconType",
+                        "d": "The type of blueprint icon"
+                    },
+                    {
+                        "n": "icon",
+                        "t": "str",
+                        "d": "The icon ID if it's a regular icon"
+                    },
+                    {
+                        "n": "shape",
+                        "t": "shapez2.gameObjects.Shape",
+                        "d": "The shape if its a shape icon"
+                    },
+                    {
+                        "n": "decode",
+                        "t": "classmethod",
+                        "r": "shapez2.blueprints.BlueprintIcon",
+                        "d": "Create a <span class=\"autolink\">blueprints.BlueprintIcon</span> from an encoded string",
+                        "params": [
+                            {
+                                "n": "raw",
+                                "t": [
+                                    "str",
+                                    "None"
+                                ],
+                                "d": "The raw string, None for an empty icon"
+                            }
+                        ]
+                    },
+                    {
+                        "n": "encode",
+                        "t": "func",
+                        "r": [
+                            "str",
+                            "None"
+                        ],
+                        "d": "Encode the icon to a string or None if it's empty"
+                    }
+                ]
+            },
+            {
+                "n": "BuildingEntry",
+                "t": "class",
+                "d": "Represents a building inside a blueprint",
+                "mute": true,
+                "params": [
+                    {
+                        "n": "pos",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The building's position"
+                    },
+                    {
+                        "n": "rotation",
+                        "t": "shapez2.utils.Rotation",
+                        "d": "The building's rotation"
+                    },
+                    {
+                        "n": "type",
+                        "t": "shapez2.buildings.BuildingInternalVariant",
+                        "d": "The building's type"
+                    },
+                    {
+                        "n": "extra",
+                        "t": [
+                            "shapez2.blueprintsExtraData.BuildingExtraData",
+                            "shapez2.blueprintsExtraData.BuildingExtraDataHolder",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The building's extra data. If None, then the default extra data for that building type will be used if it exists. If a <span class=\"autolink\">blueprintsExtraData.BuildingExtraData</span>, a <span class=\"autolink\">blueprintsExtraData.BuildingExtraDataHolder</span> will be created out of it"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "pos",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The building's position"
+                    },
+                    {
+                        "n": "rotation",
+                        "t": "shapez2.utils.Rotation",
+                        "d": "The building's rotation"
+                    },
+                    {
+                        "n": "type",
+                        "t": "shapez2.buildings.BuildingInternalVariant",
+                        "d": "The building's type"
+                    },
+                    {
+                        "n": "extra",
+                        "t": [
+                            "shapez2.blueprintsExtraData.BuildingExtraDataHolder",
+                            "None"
+                        ],
+                        "d": "The building's extra data"
+                    }
+                ]
+            },
+            {
+                "n": "BuildingBlueprint",
+                "t": "class",
+                "d": "Represents a building blueprint",
+                "mute": true,
+                "params": [
+                    {
+                        "n": "entries",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.BuildingEntry"
+                            ]
+                        },
+                        "d": "The buildings inside the blueprint"
+                    },
+                    {
+                        "n": "icons",
+                        "t": [
+                            {
+                                "n": "list",
+                                "a": [
+                                    "shapez2.blueprints.BlueprintIcon"
+                                ]
+                            },
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The blueprint's icons, if None then use the default building blueprint icons"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "entries",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.BuildingEntry"
+                            ]
+                        },
+                        "d": "The buildings inside the blueprint"
+                    },
+                    {
+                        "n": "icons",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.BlueprintIcon"
+                            ]
+                        },
+                        "d": "The blueprint's icons, without restrictions"
+                    },
+                    {
+                        "n": "toTileDict",
+                        "t": "func",
+                        "r": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.utils.Pos",
+                                {
+                                    "n": "shapez2.blueprints.TileEntry",
+                                    "a": [
+                                        "shapez2.blueprints.BuildingEntry"
+                                    ]
+                                }
+                            ]
+                        },
+                        "d": "Creates a mapping of occupied building tiles to which building entry they are from"
+                    },
+                    {
+                        "n": "getSize",
+                        "t": "func",
+                        "r": "shapez2.utils.Size",
+                        "d": "Returns the blueprint's size"
+                    },
+                    {
+                        "n": "getBuildingCount",
+                        "t": "func",
+                        "r": "int",
+                        "d": "Returns the numbers of buildings inside the blueprint"
+                    },
+                    {
+                        "n": "getBuildingCounts",
+                        "t": "func",
+                        "r": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.buildings.BuildingInternalVariant",
+                                "int"
+                            ]
+                        },
+                        "d": "Returns the amount of each building type present in the blueprint"
+                    },
+                    {
+                        "n": "getTileCount",
+                        "t": "func",
+                        "r": "int",
+                        "d": "Returns the number of occupied tiles inside the blueprint"
+                    },
+                    {
+                        "n": "getValidIcons",
+                        "t": "func",
+                        "r": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.BlueprintIcon"
+                            ]
+                        },
+                        "d": "Returns the blueprint's icons as if they were displayed ingame, i.e. with invalid icons turned into empty icons and with the list cropped/padded to 4 elements"
+                    }
+                ]
+            },
+            {
+                "n": "IslandEntry",
+                "t": "class",
+                "d": "Represents a island inside a blueprint",
+                "mute": true,
+                "params": [
+                    {
+                        "n": "pos",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The island's position"
+                    },
+                    {
+                        "n": "rotation",
+                        "t": "shapez2.utils.Rotation",
+                        "d": "The island's rotation"
+                    },
+                    {
+                        "n": "type",
+                        "t": "shapez2.islands.Island",
+                        "d": "The island's type"
+                    },
+                    {
+                        "n": "extra",
+                        "t": [
+                            "shapez2.blueprintsExtraData.IslandExtraData",
+                            "shapez2.blueprintsExtraData.IslandExtraDataHolder",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The island's extra data. If None, then the default extra data for that island type will be used if it exists. If a <span class=\"autolink\">blueprintsExtraData.IslandExtraData</span>, a <span class=\"autolink\">blueprintsExtraData.IslandExtraDataHolder</span> will be created out of it"
+                    },
+                    {
+                        "n": "buildingBP",
+                        "t": [
+                            "shapez2.blueprints.BuildingBlueprint",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The building blueprint contained inside that island, or None if there isn't one"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "pos",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The island's position"
+                    },
+                    {
+                        "n": "rotation",
+                        "t": "shapez2.utils.Rotation",
+                        "d": "The island's rotation"
+                    },
+                    {
+                        "n": "type",
+                        "t": "shapez2.islands.Island",
+                        "d": "The island's type"
+                    },
+                    {
+                        "n": "extra",
+                        "t": [
+                            "shapez2.blueprintsExtraData.IslandExtraDataHolder",
+                            "None"
+                        ],
+                        "d": "The island's extra data"
+                    },
+                    {
+                        "n": "buildingBP",
+                        "t": [
+                            "shapez2.blueprints.BuildingBlueprint",
+                            "None"
+                        ],
+                        "d": "The building blueprint contained on that island, or None if there isn't one"
+                    }
+                ]
+            },
+            {
+                "n": "IslandBlueprint",
+                "t": "class",
+                "d": "Represents an island blueprint",
+                "mute": true,
+                "params": [
+                    {
+                        "n": "entries",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.IslandEntry"
+                            ]
+                        },
+                        "d": "The islands inside the blueprint"
+                    },
+                    {
+                        "n": "icons",
+                        "t": [
+                            {
+                                "n": "list",
+                                "a": [
+                                    "shapez2.blueprints.BlueprintIcon"
+                                ]
+                            },
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The blueprint's icons, if None then use the default island blueprint icons"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "entries",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.IslandEntry"
+                            ]
+                        },
+                        "d": "The islands inside the blueprint"
+                    },
+                    {
+                        "n": "icons",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.BlueprintIcon"
+                            ]
+                        },
+                        "d": "The blueprint's icons, without restrictions"
+                    },
+                    {
+                        "n": "toTileDict",
+                        "t": "func",
+                        "r": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.utils.Pos",
+                                {
+                                    "n": "shapez2.blueprints.TileEntry",
+                                    "a": [
+                                        "shapez2.blueprints.IslandEntry"
+                                    ]
+                                }
+                            ]
+                        },
+                        "d": "Creates a mapping of occupied island tiles to which island entry they are from"
+                    },
+                    {
+                        "n": "getSize",
+                        "t": "func",
+                        "r": "shapez2.utils.Size",
+                        "d": "Returns the blueprint's size"
+                    },
+                    {
+                        "n": "getIslandCount",
+                        "t": "func",
+                        "r": "int",
+                        "d": "Returns the numbers of islands inside the blueprint"
+                    },
+                    {
+                        "n": "getIslandCounts",
+                        "t": "func",
+                        "r": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.islands.Island",
+                                "int"
+                            ]
+                        },
+                        "d": "Returns the amount of each island type present in the blueprint"
+                    },
+                    {
+                        "n": "getTileCount",
+                        "t": "func",
+                        "r": "int",
+                        "d": "Returns the number of occupied tiles inside the blueprint"
+                    },
+                    {
+                        "n": "getValidIcons",
+                        "t": "func",
+                        "r": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprints.BlueprintIcon"
+                            ]
+                        },
+                        "d": "Returns the blueprint's icons as if they were displayed ingame, i.e. with invalid icons turned into empty icons and with the list cropped/padded to 4 elements"
+                    }
+                ]
+            },
+            {
+                "n": "Blueprint",
+                "t": "class",
+                "d": "Represents a blueprint container object",
+                "params": [
+                    {
+                        "n": "blueprint",
+                        "t": [
+                            "shapez2.blueprints.BuildingBlueprint",
+                            "shapez2.blueprints.IslandBlueprint"
+                        ],
+                        "d": "The building or island blueprint contained"
+                    },
+                    {
+                        "n": "majorVersion",
+                        "t": "int",
+                        "def": "shapez2.versions.LATEST_MAJOR_VERSION",
+                        "d": "The blueprint's major version, i.e. the number visible at the start of the blueprint code"
+                    },
+                    {
+                        "n": "version",
+                        "t": "int",
+                        "def": "shapez2.versions.LATEST_GAME_VERSION",
+                        "d": "The blueprint's version number"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "type",
+                        "t": "shapez2.blueprints.BlueprintType",
+                        "d": "The contained blueprint's type"
+                    },
+                    {
+                        "n": "innerBlueprint",
+                        "t": [
+                            "shapez2.blueprints.BuildingBlueprint",
+                            "shapez2.blueprints.IslandBlueprint"
+                        ],
+                        "d": "The contained blueprint"
+                    },
+                    {
+                        "n": "buildingBP",
+                        "t": [
+                            "shapez2.blueprints.BuildingBlueprint",
+                            "None"
+                        ],
+                        "d": "If a building blueprint, the contained blueprint. If an island blueprint, the building blueprints of all the island entries merged together, or None if there aren't any buildings"
+                    },
+                    {
+                        "n": "islandBP",
+                        "t": [
+                            "shapez2.blueprints.IslandBlueprint",
+                            "None"
+                        ],
+                        "d": "The contained island blueprint or None if it's a building blueprint"
+                    },
+                    {
+                        "n": "majorVersion",
+                        "t": "int",
+                        "d": "The blueprint's major version"
+                    },
+                    {
+                        "n": "version",
+                        "t": "int",
+                        "d": "The blueprint's version number"
+                    },
+                    {
+                        "n": "getCost",
+                        "t": "func",
+                        "r": "int",
+                        "d": "Returns the blueprint points cost of placing the blueprint with a 'copy/paste cost' of 100%. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if an OverflowError happens in the computation"
+                    },
+                    {
+                        "n": "getIslandUnitCost",
+                        "t": "func",
+                        "r": [
+                            "int",
+                            "float"
+                        ],
+                        "d": "Returns the platform units cost of placing the blueprint"
+                    }
+                ]
+            },
+            {
+                "n": "TileEntry",
+                "t": "dataclass",
+                "attrs": [
+                    {
+                        "n": "referTo",
+                        "t": [
+                            "shapez2.blueprints.BuildingEntry",
+                            "shapez2.blueprints.IslandEntry"
+                        ],
+                        "d": "Which building or island this tile belongs to"
+                    }
+                ]
+            },
+            {
+                "n": "VALID_BP_ICONS",
+                "t": {
+                    "n": "list",
+                    "a": [
+                        "str"
+                    ]
+                },
+                "d": "The list of all valid blueprint icon IDs"
+            },
+            {
+                "n": "getBlueprintVersion",
+                "t": "func",
+                "r": "int",
+                "d": "Does as little as possible of the decoding process and returns the blueprint's version. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if the blueprint format is invalid",
+                "params": [
+                    {
+                        "n": "blueprint",
+                        "t": "str",
+                        "d": "The raw blueprint code"
+                    }
+                ]
+            },
+            {
+                "n": "decodeBlueprint",
+                "t": "func",
+                "r": "shapez2.blueprints.Blueprint",
+                "d": "<p>Creates a blueprint object from a blueprint code. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if the blueprint format is invalid or it contains invalid data. When <code>migrate</code> is False, runs the same migration features as ingame. When True, also runs additional migration features :</p><ul><li>If an entry type is invalid, the entry is ignored instead of raising an error.</li><li>If the blueprint's version is less than 1024 (alpha 8), default stackers (which were changed from straight to bent in that update) are changed to straight stackers.</li><li>If the blueprint's version is less than 1119 (0.1.0-pre2), global wire transmitters are turned into global signal transmitters and global wire receivers that weren't set to a ROS channel get turned into global signal receivers.</li><li>For the rest of the migration features see <a href=\"https://github.com/Loupau38/shapez-2-tools/blob/main/bp%20fixer/README.md\" target=\"_blank\">here</a>.</li></ul>",
+                "nop": true,
+                "params": [
+                    {
+                        "n": "rawBlueprint",
+                        "t": "str",
+                        "d": "The raw blueprint code"
+                    },
+                    {
+                        "n": "migrate",
+                        "t": "bool",
+                        "def": "False",
+                        "d": "Wether or not to run additional migration features"
+                    }
+                ]
+            },
+            {
+                "n": "encodeBlueprint",
+                "t": "func",
+                "r": "str",
+                "d": "Creates a blueprint code from a blueprint object",
+                "params": [
+                    {
+                        "n": "blueprint",
+                        "t": "shapez2.blueprints.Blueprint",
+                        "d": "The blueprint object"
+                    }
+                ]
+            },
+            {
+                "n": "getPotentialBPCodesInString",
+                "t": "func",
+                "r": {
+                    "n": "list",
+                    "a": [
+                        "str"
+                    ]
+                },
+                "d": "Returns the potential blueprint codes from a string, i.e. substrings starting with the blueprint code prefix (<code>SHAPEZ2</code>) and ending with the blueprint code suffix (<code>$</code>)",
+                "params": [
+                    {
+                        "n": "string",
+                        "t": "str",
+                        "d": "The string to search"
+                    }
+                ]
+            },
+            {
+                "n": "getDefaultBlueprintIcons",
+                "t": "func",
+                "r": {
+                    "n": "list",
+                    "a": [
+                        "shapez2.blueprints.BlueprintIcon"
+                    ]
+                },
+                "d": "Returns the default blueprint icons for the specified blueprint type",
+                "params": [
+                    {
+                        "n": "bpType",
+                        "t": "shapez2.blueprints.BlueprintType",
+                        "d": "The blueprint type"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "blueprintsExtraData",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "ShapeGeneratorType",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of a <span class=\"autolink\">blueprintsExtraData.ShapeGenerator</span>",
+                "attrs": [
+                    {
+                        "n": "empty",
+                        "t": "Literal[\"empty\"]",
+                        "d": "An empty shape generator, doesn't produce anything"
+                    },
+                    {
+                        "n": "shape",
+                        "t": "Literal[\"shape\"]",
+                        "d": "A shape generator producing a shape"
+                    }
+                ]
+            },
+            {
+                "n": "ShapeGenerator",
+                "t": "class",
+                "d": "Represents a shape generator, used in <span class=\"autolink\">blueprintsExtraData.SignalProducerExtraData</span> and <span class=\"autolink\">blueprintsExtraData.ItemProducerExtraData</span>",
+                "params": [
+                    {
+                        "n": "genType",
+                        "t": "shapez2.blueprintsExtraData.ShapeGeneratorType",
+                        "d": "The type of shape generator"
+                    },
+                    {
+                        "n": "shape",
+                        "t": [
+                            "shapez2.gameObjects.Shape",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The shape if it's producing a shape"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "genType",
+                        "t": "shapez2.blueprintsExtraData.ShapeGeneratorType",
+                        "d": "The type of shape generator"
+                    },
+                    {
+                        "n": "shape",
+                        "t": "shapez2.gameObjects.Shape",
+                        "d": "The shape if it's producing a shape"
+                    }
+                ]
+            },
+            {
+                "n": "FluidGeneratorType",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of a <span class=\"autolink\">blueprintsExtraData.FluidGenerator</span>",
+                "attrs": [
+                    {
+                        "n": "empty",
+                        "t": "Literal[\"empty\"]",
+                        "d": "An empty fluid generator, doesn't produce anything"
+                    },
+                    {
+                        "n": "paint",
+                        "t": "Literal[\"paint\"]",
+                        "d": "A fluid generator producing paint"
+                    }
+                ]
+            },
+            {
+                "n": "FluidGenerator",
+                "t": "class",
+                "d": "Represents a fluid generator, used in <span class=\"autolink\">blueprintsExtraData.SignalProducerExtraData</span> and <span class=\"autolink\">blueprintsExtraData.FluidProducerExtraData</span>",
+                "params": [
+                    {
+                        "n": "genType",
+                        "t": "shapez2.blueprintsExtraData.FluidGeneratorType",
+                        "d": "The type of fluid generator"
+                    },
+                    {
+                        "n": "color",
+                        "t": [
+                            "shapez2.gameObjects.Color",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The paint color if it's producing paint"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "genType",
+                        "t": "shapez2.blueprintsExtraData.FluidGeneratorType",
+                        "d": "The type of fluid generator"
+                    },
+                    {
+                        "n": "color",
+                        "t": "shapez2.gameObjects.Color",
+                        "d": "The paint color if it's producing paint"
+                    }
+                ]
+            },
+            {
+                "n": "SignalGeneratorType",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of signal generated by a <span class=\"autolink\">blueprintsExtraData.SignalProducerExtraData</span>",
+                "attrs": [
+                    {
+                        "n": "empty",
+                        "t": "Literal[\"empty\"]",
+                        "d": "No signal"
+                    },
+                    {
+                        "n": "null",
+                        "t": "Literal[\"null\"]",
+                        "d": "A null signal"
+                    },
+                    {
+                        "n": "conflict",
+                        "t": "Literal[\"conflict\"]",
+                        "d": "A conflict signal"
+                    },
+                    {
+                        "n": "number",
+                        "t": "Literal[\"number\"]",
+                        "d": "A number signal"
+                    },
+                    {
+                        "n": "shape",
+                        "t": "Literal[\"shape\"]",
+                        "d": "A shape signal"
+                    },
+                    {
+                        "n": "fluid",
+                        "t": "Literal[\"fluid\"]",
+                        "d": "A color signal"
+                    }
+                ]
+            },
+            {
+                "n": "CompareMode",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The mode of a comparison gate, used in <span class=\"autolink\">blueprintsExtraData.ComparisonGateExtraData</span>",
+                "attrs": [
+                    {
+                        "n": "Equal",
+                        "t": "Literal[1]",
+                        "d": "Equal to"
+                    },
+                    {
+                        "n": "GreaterEqual",
+                        "t": "Literal[2]",
+                        "d": "Greater than or equal to"
+                    },
+                    {
+                        "n": "Greater",
+                        "t": "Literal[3]",
+                        "d": "Greater than"
+                    },
+                    {
+                        "n": "Less",
+                        "t": "Literal[4]",
+                        "d": "Less than"
+                    },
+                    {
+                        "n": "LessEqual",
+                        "t": "Literal[5]",
+                        "d": "Less than or equal to"
+                    },
+                    {
+                        "n": "NotEqual",
+                        "t": "Literal[6]",
+                        "d": "Not equal to"
+                    }
+                ]
+            },
+            {
+                "n": "LabelExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of a label",
+                "attrs": [
+                    {
+                        "n": "text",
+                        "t": "str",
+                        "d": "The label's text"
+                    }
+                ]
+            },
+            {
+                "n": "SignalProducerExtraData",
+                "t": "class",
+                "d": "Represents the extra data of a signal producer",
+                "params": [
+                    {
+                        "n": "signalType",
+                        "t": "shapez2.blueprintsExtraData.SignalGeneratorType",
+                        "d": "The type of signal generated"
+                    },
+                    "*",
+                    {
+                        "n": "number",
+                        "t": [
+                            "int",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The number if it's producing a number signal"
+                    },
+                    {
+                        "n": "shapeGen",
+                        "t": [
+                            "shapez2.blueprintsExtraData.ShapeGenerator",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The shape generator if it's producing a shape signal"
+                    },
+                    {
+                        "n": "fluidGen",
+                        "t": [
+                            "shapez2.blueprintsExtraData.FluidGenerator",
+                            "None"
+                        ],
+                        "def": "None",
+                        "d": "The fluid generator if it's producing a color signal"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "signalType",
+                        "t": "shapez2.blueprintsExtraData.SignalGeneratorType",
+                        "d": "The type of signal generated"
+                    },
+                    {
+                        "n": "number",
+                        "t": "int",
+                        "d": "The number if it's producing a number signal"
+                    },
+                    {
+                        "n": "shapeGen",
+                        "t": "shapez2.blueprintsExtraData.ShapeGenerator",
+                        "d": "The shape generator if it's producing a shape signal"
+                    },
+                    {
+                        "n": "fluidGen",
+                        "t": "shapez2.blueprintsExtraData.FluidGenerator",
+                        "d": "The fluid generator if it's producing a color signal"
+                    }
+                ]
+            },
+            {
+                "n": "ItemProducerExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of an item producer",
+                "attrs": [
+                    {
+                        "n": "shapeGen",
+                        "t": "shapez2.blueprintsExtraData.ShapeGenerator",
+                        "d": "What the item producer is producing"
+                    }
+                ]
+            },
+            {
+                "n": "FluidProducerExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of a fluid producer",
+                "attrs": [
+                    {
+                        "n": "fluidGen",
+                        "t": "shapez2.blueprintsExtraData.FluidGenerator",
+                        "d": "What the fluid producer is producing"
+                    }
+                ]
+            },
+            {
+                "n": "ButtonExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of a button",
+                "attrs": [
+                    {
+                        "n": "activated",
+                        "t": "bool",
+                        "d": "Wether or not the button is activated"
+                    }
+                ]
+            },
+            {
+                "n": "ComparisonGateExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of a comparison gate",
+                "attrs": [
+                    {
+                        "n": "compareMode",
+                        "t": "shapez2.blueprintsExtraData.CompareMode",
+                        "d": "What comparison mode the gate is set to"
+                    }
+                ]
+            },
+            {
+                "n": "OperatorSignalReceiverExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of an operator signal receiver",
+                "attrs": [
+                    {
+                        "n": "channel",
+                        "t": "Literal[0, 1]",
+                        "d": "Which channel the receiver is set to"
+                    }
+                ]
+            },
+            {
+                "n": "BuildingExtraData",
+                "t": "type",
+                "d": "A union for all the building extra data classes listed above"
+            },
+            {
+                "n": "BuildingExtraDataHolder",
+                "t": "class",
+                "d": "A holder class for a building extra data class",
+                "params": [
+                    {
+                        "n": "value",
+                        "t": "shapez2.blueprintsExtraData.BuildingExtraData",
+                        "d": "The building extra data class to hold"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "label",
+                        "t": "shapez2.blueprintsExtraData.LabelExtraData",
+                        "d": "If it's holding a label extra data"
+                    },
+                    {
+                        "n": "signalProducer",
+                        "t": "shapez2.blueprintsExtraData.SignalProducerExtraData",
+                        "d": "If it's holding a signal producer extra data"
+                    },
+                    {
+                        "n": "itemProducer",
+                        "t": "shapez2.blueprintsExtraData.ItemProducerExtraData",
+                        "d": "If it's holding an item producer extra data"
+                    },
+                    {
+                        "n": "fluidProducer",
+                        "t": "shapez2.blueprintsExtraData.FluidProducerExtraData",
+                        "d": "If it's holding a fluid producer extra data"
+                    },
+                    {
+                        "n": "button",
+                        "t": "shapez2.blueprintsExtraData.ButtonExtraData",
+                        "d": "If it's holding a button extra data"
+                    },
+                    {
+                        "n": "comparisonGate",
+                        "t": "shapez2.blueprintsExtraData.ComparisonGateExtraData",
+                        "d": "If it's holding a comparison gate extra data"
+                    },
+                    {
+                        "n": "operatorSignalReceiver",
+                        "t": "shapez2.blueprintsExtraData.OperatorSignalReceiverExtraData",
+                        "d": "If it's holding an operator signal receiver extra data"
+                    }
+                ]
+            },
+            {
+                "n": "RailConnectionAllowedColors",
+                "t": "dataclass",
+                "d": "The allowed train colors on a rail connection",
+                "attrs": [
+                    {
+                        "n": "b",
+                        "t": "bool",
+                        "d": "If blue trains are allowed"
+                    },
+                    {
+                        "n": "g",
+                        "t": "bool",
+                        "d": "If green trains are allowed"
+                    },
+                    {
+                        "n": "r",
+                        "t": "bool",
+                        "d": "If red trains are allowed"
+                    },
+                    {
+                        "n": "w",
+                        "t": "bool",
+                        "d": "If white trains are allowed"
+                    },
+                    {
+                        "n": "c",
+                        "t": "bool",
+                        "d": "If cyan trains are allowed"
+                    },
+                    {
+                        "n": "m",
+                        "t": "bool",
+                        "d": "If magenta trains are allowed"
+                    },
+                    {
+                        "n": "y",
+                        "t": "bool",
+                        "d": "If yellow trains are allowed"
+                    }
+                ]
+            },
+            {
+                "n": "RailExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of a rail",
+                "attrs": [
+                    {
+                        "n": "connectionColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.blueprintsExtraData.RailConnectionAllowedColors"
+                            ]
+                        },
+                        "d": "The allowed train colors on each connection inside the rail"
+                    }
+                ]
+            },
+            {
+                "n": "DisableableTrainUnloadingLanesExtraData",
+                "t": "dataclass",
+                "d": "Represents the extra data of an island with disableable train unloading lanes (i.e. unloaders and transfer stations)",
+                "attrs": [
+                    {
+                        "n": "disabledLanes",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "int"
+                            ]
+                        },
+                        "d": "Which lane (floor) indexes are disabled"
+                    }
+                ]
+            },
+            {
+                "n": "IslandExtraData",
+                "t": "type",
+                "d": "A union for all the island extra data classes listed above"
+            },
+            {
+                "n": "IslandExtraDataHolder",
+                "t": "class",
+                "d": "A holder class for an island extra data class",
+                "params": [
+                    {
+                        "n": "value",
+                        "t": "shapez2.blueprintsExtraData.IslandExtraData",
+                        "d": "The island extra data class to hold"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "rail",
+                        "t": "shapez2.blueprintsExtraData.RailExtraData",
+                        "d": "If it's holding a rail extra data"
+                    },
+                    {
+                        "n": "disableableTrainUnloadingLanes",
+                        "t": "shapez2.blueprintsExtraData.DisableableTrainUnloadingLanesExtraData",
+                        "d": "If it's holding a disableable train unloading lanes extra data"
+                    }
+                ]
+            },
+            {
+                "n": "decodeEntryExtraData",
+                "t": "func",
+                "r": [
+                    "shapez2.blueprintsExtraData.BuildingExtraData",
+                    "shapez2.blueprintsExtraData.IslandExtraData",
+                    "None"
+                ],
+                "d": "Decodes extra data from raw bytes and returns the custom class result or None if the entry isn't supposed to have extra data. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if the raw bytes data format is invalid",
+                "params": [
+                    {
+                        "n": "rawDecoded",
+                        "t": "bytes",
+                        "d": "The bytes decoded from base64"
+                    },
+                    {
+                        "n": "entryType",
+                        "t": "str",
+                        "d": "The entry type's ID this extra data belongs to"
+                    }
+                ]
+            },
+            {
+                "n": "encodeEntryExtraData",
+                "t": "func",
+                "r": [
+                    "bytes",
+                    "None"
+                ],
+                "d": "Encodes extra data from a custom class into bytes and returns the result or None if the entry doesn't have extra data",
+                "params": [
+                    {
+                        "n": "extra",
+                        "t": [
+                            "shapez2.blueprintsExtraData.BuildingExtraDataHolder",
+                            "shapez2.blueprintsExtraData.IslandExtraDataHolder",
+                            "None"
+                        ],
+                        "d": "The extra data to encode or None so this function can be ran for all entries"
+                    },
+                    {
+                        "n": "entryType",
+                        "t": "str",
+                        "d": "The entry type's ID this extra data belongs to"
+                    }
+                ]
+            },
+            {
+                "n": "getDefaultEntryExtraData",
+                "t": "func",
+                "r": [
+                    "shapez2.blueprintsExtraData.BuildingExtraData",
+                    "shapez2.blueprintsExtraData.IslandExtraData",
+                    "None"
+                ],
+                "d": "Returns the default extra data for an entry type or None if it doesn't have extra data",
+                "params": [
+                    {
+                        "n": "entryType",
+                        "t": "str",
+                        "d": "The entry type's ID"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "buildings",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "BuildingVariant",
+                "t": "class",
+                "d": "Represents a building variant",
+                "params": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The variant's ID"
+                    },
+                    {
+                        "n": "title",
+                        "t": "shapez2.translations.MaybeTranslationString",
+                        "d": "The variant's title"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The variant's ID"
+                    },
+                    {
+                        "n": "title",
+                        "t": "shapez2.translations.MaybeTranslationString",
+                        "d": "The variant's title"
+                    },
+                    {
+                        "n": "internalVariants",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.buildings.BuildingInternalVariant"
+                            ]
+                        },
+                        "d": "The building internal variants this variant contains"
+                    }
+                ]
+            },
+            {
+                "n": "BuildingInternalVariant",
+                "t": "dataclass",
+                "d": "Represents a building internal variant",
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The internal variant's ID"
+                    },
+                    {
+                        "n": "tiles",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.utils.Pos"
+                            ]
+                        },
+                        "d": "The internal variant's tiles"
+                    },
+                    {
+                        "n": "fromBuildingVariant",
+                        "t": "shapez2.buildings.BuildingVariant",
+                        "d": "The building variant this internal variant is from"
+                    }
+                ]
+            },
+            {
+                "n": "allBuildingVariants",
+                "t": {
+                    "n": "dict",
+                    "a": [
+                        "str",
+                        "shapez2.buildings.BuildingVariant"
+                    ]
+                },
+                "d": "A mapping of all the ingame building variant IDs to their corresponding building variant"
+            },
+            {
+                "n": "allBuildingInternalVariants",
+                "t": {
+                    "n": "dict",
+                    "a": [
+                        "str",
+                        "shapez2.buildings.BuildingInternalVariant"
+                    ]
+                },
+                "d": "A mapping of all the ingame building internal variant IDs to their corresponding building internal variant"
+            },
+            {
+                "n": "getCategorizedBuildingCounts",
+                "t": "func",
+                "r": {
+                    "n": "dict",
+                    "a": [
+                        "shapez2.buildings.BuildingVariant",
+                        {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.buildings.BuildingInternalVariant",
+                                "int"
+                            ]
+                        }
+                    ]
+                },
+                "d": "Categorizes counts of building internal variants into building variant groups",
+                "params": [
+                    {
+                        "n": "counts",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.buildings.BuildingInternalVariant",
+                                "int"
+                            ]
+                        },
+                        "d": "The raw internal variant counts"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "gameObjects",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "Color",
+                "t": "dataclass",
+                "d": "Represents an ingame color",
+                "attrs": [
+                    {
+                        "n": "code",
+                        "t": "str",
+                        "d": "The color's one letter code"
+                    }
+                ]
+            },
+            {
+                "n": "ColorSkin",
+                "t": "dataclass",
+                "d": "A mapping of how each color should look",
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The color skin's ID"
+                    },
+                    {
+                        "n": "colors",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.gameObjects.Color",
+                                {
+                                    "n": "tuple",
+                                    "a": [
+                                        "int",
+                                        "int",
+                                        "int"
+                                    ]
+                                }
+                            ]
+                        },
+                        "d": "The mapping of colors to how they look as an (R,G,B) tuple"
+                    }
+                ]
+            },
+            {
+                "n": "ColorMode",
+                "t": "dataclass",
+                "d": "Represents an ingame color mode",
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The color mode's ID"
+                    },
+                    {
+                        "n": "colorSkin",
+                        "t": "shapez2.gameObjects.ColorSkin",
+                        "d": "The color mode's color skin"
+                    },
+                    {
+                        "n": "colorblindPatterns",
+                        "t": "bool",
+                        "d": "If the color mode has colorblind patterns"
+                    }
+                ]
+            },
+            {
+                "n": "ColorScheme",
+                "t": "class",
+                "d": "Represents an ingame color scheme",
+                "params": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The color scheme's ID"
+                    },
+                    {
+                        "n": "primaryColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's primary colors"
+                    },
+                    {
+                        "n": "secondaryColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's secondary colors"
+                    },
+                    {
+                        "n": "tertiaryColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's tertiary colors"
+                    },
+                    {
+                        "n": "defaultColor",
+                        "t": "shapez2.gameObjects.Color",
+                        "d": "The color scheme's default color"
+                    },
+                    {
+                        "n": "colorModes",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ColorMode"
+                            ]
+                        },
+                        "d": "The color modes available in this color scheme"
+                    },
+                    {
+                        "n": "mixingRecipes",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                {
+                                    "n": "frozenset",
+                                    "a": [
+                                        "shapez2.gameObjects.Color"
+                                    ]
+                                },
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The mixing recipes in this color scheme as a mapping of inputs to output, where the inputs are represented by a 2-elements frozenset"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The color scheme's ID"
+                    },
+                    {
+                        "n": "primaryColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's primary colors"
+                    },
+                    {
+                        "n": "secondaryColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's secondary colors"
+                    },
+                    {
+                        "n": "tertiaryColors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's tertiary colors"
+                    },
+                    {
+                        "n": "defaultColor",
+                        "t": "shapez2.gameObjects.Color",
+                        "d": "The color scheme's default color"
+                    },
+                    {
+                        "n": "colorModes",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ColorMode"
+                            ]
+                        },
+                        "d": "The color modes available in this color scheme"
+                    },
+                    {
+                        "n": "mixingRecipes",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                {
+                                    "n": "frozenset",
+                                    "a": [
+                                        "shapez2.gameObjects.Color"
+                                    ]
+                                },
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The mixing recipes in this color scheme as a mapping of inputs to output, where the inputs are represented by a 2-elements frozenset"
+                    },
+                    {
+                        "n": "colors",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "The color scheme's colors"
+                    },
+                    {
+                        "n": "colorsByCode",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "str",
+                                "shapez2.gameObjects.Color"
+                            ]
+                        },
+                        "d": "A mapping of each color code to its corresponding color"
+                    },
+                    {
+                        "n": "colorModesById",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "str",
+                                "shapez2.gameObjects.ColorMode"
+                            ]
+                        },
+                        "d": "A mapping of each color mode ID to its corresponding color mode"
+                    },
+                    {
+                        "n": "getMixResult",
+                        "t": "func",
+                        "r": "shapez2.gameObjects.Color",
+                        "d": "Returns the result of mixing two colors. Abstracts the creation of a frozenset for the <span class=\"autolink\">gameObjects.ColorScheme.mixingRecipes</span> attribute",
+                        "params": [
+                            {
+                                "n": "color1",
+                                "t": "shapez2.gameObjects.Color",
+                                "d": "The first input color"
+                            },
+                            {
+                                "n": "color2",
+                                "t": "shapez2.gameObjects.Color",
+                                "d": "The second input color"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "ShapePartType",
+                "t": "dataclass",
+                "d": "The type of a shape part",
+                "attrs": [
+                    {
+                        "n": "code",
+                        "t": "str",
+                        "d": "The part type's one letter code"
+                    },
+                    {
+                        "n": "hasColor",
+                        "t": "bool",
+                        "def": "True",
+                        "d": "If the part can have a color"
+                    },
+                    {
+                        "n": "canChangeColor",
+                        "t": "bool",
+                        "def": "True",
+                        "d": "If the part can change color, i.e. in a painter"
+                    },
+                    {
+                        "n": "connectsHorizontally",
+                        "t": "bool",
+                        "def": "True",
+                        "d": "If the part connects to other parts horizontally and thus supports them and is supported by them"
+                    },
+                    {
+                        "n": "crystalBehavior",
+                        "t": "bool",
+                        "def": "False",
+                        "d": "If the part has the behavior of crystals"
+                    },
+                    {
+                        "n": "replacedByCrystal",
+                        "t": "bool",
+                        "def": "False",
+                        "d": "If the part is replaced by crystal in a crystal generator"
+                    }
+                ]
+            },
+            {
+                "n": "ShapesConfiguration",
+                "t": "class",
+                "d": "Represents an ingame shapes configuration",
+                "params": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The shapes configuration's ID"
+                    },
+                    {
+                        "n": "numPartsPerLayer",
+                        "t": "int",
+                        "d": "The number of parts each layer of a shape should have"
+                    },
+                    {
+                        "n": "pinPart",
+                        "t": "shapez2.gameObjects.ShapePartType",
+                        "d": "The part type that should be considered a pin"
+                    },
+                    {
+                        "n": "crystalPart",
+                        "t": "shapez2.gameObjects.ShapePartType",
+                        "d": "The part type that should be considered a crystal"
+                    },
+                    {
+                        "n": "parts",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ShapePartType"
+                            ]
+                        },
+                        "d": "The part types available in this shapes configuration"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The shapes configuration's ID"
+                    },
+                    {
+                        "n": "numPartsPerLayer",
+                        "t": "int",
+                        "d": "The number of parts each layer of a shape should have"
+                    },
+                    {
+                        "n": "pinPart",
+                        "t": "shapez2.gameObjects.ShapePartType",
+                        "d": "The part type that should be considered a pin"
+                    },
+                    {
+                        "n": "crystalPart",
+                        "t": "shapez2.gameObjects.ShapePartType",
+                        "d": "The part type that should be considered a crystal"
+                    },
+                    {
+                        "n": "parts",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ShapePartType"
+                            ]
+                        },
+                        "d": "The part types available in this shapes configuration"
+                    },
+                    {
+                        "n": "partsByCode",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "str",
+                                "shapez2.gameObjects.ShapePartType"
+                            ]
+                        },
+                        "d": "A mapping of each part type ID to its corresponding part type"
+                    }
+                ]
+            },
+            {
+                "n": "ShapePart",
+                "t": "dataclass",
+                "d": "Represents a part inside a shape",
+                "attrs": [
+                    {
+                        "n": "type",
+                        "t": [
+                            "shapez2.gameObjects.ShapePartType",
+                            "None"
+                        ],
+                        "d": "The part's type or None if it's an empty part"
+                    },
+                    {
+                        "n": "color",
+                        "t": [
+                            "shapez2.gameObjects.Color",
+                            "None"
+                        ],
+                        "d": "The part's color or None if it doesn't have a color"
+                    },
+                    {
+                        "n": "toString",
+                        "t": "func",
+                        "r": "str",
+                        "d": "Returns the string representation of the shape part, as in a shape code"
+                    }
+                ]
+            },
+            {
+                "n": "Shape",
+                "t": "class",
+                "d": "Represents an ingame shape",
+                "params": [
+                    {
+                        "n": "layers",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                {
+                                    "n": "list",
+                                    "a": [
+                                        "shapez2.gameObjects.ShapePart"
+                                    ]
+                                }
+                            ]
+                        },
+                        "d": "The shape's layers, each layer being a list of shape parts"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "layers",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                {
+                                    "n": "list",
+                                    "a": [
+                                        "shapez2.gameObjects.ShapePart"
+                                    ]
+                                }
+                            ]
+                        },
+                        "d": "The shape's layers, each layer being a list of shape parts"
+                    },
+                    {
+                        "n": "numLayers",
+                        "t": "int",
+                        "d": "The number of layers in the shape"
+                    },
+                    {
+                        "n": "numParts",
+                        "t": "int",
+                        "d": "The number of parts each layer contains"
+                    },
+                    {
+                        "n": "fromShapeCode",
+                        "t": "classmethod",
+                        "r": "shapez2.gameObjects.Shape",
+                        "d": "Creates a shape object from a shape code",
+                        "params": [
+                            {
+                                "n": "shapeCode",
+                                "t": "str",
+                                "d": "The shape code"
+                            },
+                            {
+                                "n": "shapesConfig",
+                                "t": "shapez2.gameObjects.ShapesConfiguration",
+                                "d": "The shapes configuration of the shape code"
+                            },
+                            {
+                                "n": "colorScheme",
+                                "t": "shapez2.gameObjects.ColorScheme",
+                                "def": "shapez2.ingameData.DEFAULT_COLOR_SCHEME",
+                                "d": "The color scheme of the shape code, defaults to the ingame default color scheme"
+                            }
+                        ]
+                    },
+                    {
+                        "n": "toShapeCode",
+                        "t": "func",
+                        "r": "str",
+                        "d": "Returns the shape code representing the shape"
+                    },
+                    {
+                        "n": "isEmpty",
+                        "t": "func",
+                        "r": "bool",
+                        "d": "Returns wether the shape is empty, i.e. wether it contains only empty parts"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "ingameData",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "DEFAULT_COLOR_SCHEME",
+                "t": "shapez2.gameObjects.ColorScheme",
+                "d": "The default (and only) color scheme ingame"
+            },
+            {
+                "n": "QUAD_SHAPES_CONFIG",
+                "t": "shapez2.gameObjects.ShapesConfiguration",
+                "d": "The quad shapes configuration ingame"
+            },
+            {
+                "n": "HEX_SHAPES_CONFIG",
+                "t": "shapez2.gameObjects.ShapesConfiguration",
+                "d": "The hex shapes configuration ingame"
+            }
+        ]
+    },
+    {
+        "n": "islands",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "IslandTile",
+                "t": "dataclass",
+                "d": "Represents an island's tile",
+                "attrs": [
+                    {
+                        "n": "pos",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The tile's position"
+                    },
+                    {
+                        "n": "buildArea",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.utils.Rect"
+                            ]
+                        },
+                        "d": "The tile's buildable area, empty if not buildable"
+                    }
+                ]
+            },
+            {
+                "n": "Island",
+                "t": "class",
+                "d": "Represents an island/platform",
+                "params": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The island's ID"
+                    },
+                    {
+                        "n": "title",
+                        "t": "shapez2.translations.MaybeTranslationString",
+                        "d": "The island's title"
+                    },
+                    {
+                        "n": "tiles",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.islands.IslandTile"
+                            ]
+                        },
+                        "d": "The island's tiles"
+                    },
+                    {
+                        "n": "islandUnitCost",
+                        "t": [
+                            "int",
+                            "float"
+                        ],
+                        "d": "The island's cost"
+                    },
+                    {
+                        "n": "group",
+                        "t": "shapez2.islands.IslandGroup",
+                        "d": "The island group this island belongs to"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The island's ID"
+                    },
+                    {
+                        "n": "title",
+                        "t": "shapez2.translations.MaybeTranslationString",
+                        "d": "The island's title"
+                    },
+                    {
+                        "n": "tiles",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.islands.IslandTile"
+                            ]
+                        },
+                        "d": "The island's tiles"
+                    },
+                    {
+                        "n": "islandUnitCost",
+                        "t": [
+                            "int",
+                            "float"
+                        ],
+                        "d": "The island's cost"
+                    },
+                    {
+                        "n": "group",
+                        "t": "shapez2.islands.IslandGroup",
+                        "d": "The island group this island belongs to"
+                    },
+                    {
+                        "n": "totalBuildArea",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.utils.Rect"
+                            ]
+                        },
+                        "d": "The island's total build area, made from merging the build areas of all its tiles"
+                    }
+                ]
+            },
+            {
+                "n": "IslandGroup",
+                "t": "dataclass",
+                "d": "Represents a group of similar islands, used for research unlocks",
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The group's ID"
+                    },
+                    {
+                        "n": "title",
+                        "t": "shapez2.translations.MaybeTranslationString",
+                        "d": "The group's title"
+                    },
+                    {
+                        "n": "islands",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.islands.Island"
+                            ]
+                        },
+                        "d": "The islands this group contains"
+                    }
+                ]
+            },
+            {
+                "n": "allIslands",
+                "t": {
+                    "n": "dict",
+                    "a": [
+                        "str",
+                        "shapez2.islands.Island"
+                    ]
+                },
+                "d": "A mapping of all the ingame island IDs to their corresponding island"
+            },
+            {
+                "n": "allIslandGroups",
+                "t": {
+                    "n": "dict",
+                    "a": [
+                        "str",
+                        "shapez2.islands.IslandGroup"
+                    ]
+                },
+                "d": "A mapping of all the ingame island group IDs to their corresponding island group"
+            },
+            {
+                "n": "getCategorizedIslandCounts",
+                "t": "func",
+                "r": {
+                    "n": "dict",
+                    "a": [
+                        "shapez2.islands.IslandGroup",
+                        {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.islands.Island",
+                                "int"
+                            ]
+                        }
+                    ]
+                },
+                "d": "Categorizes counts of islands into island groups",
+                "params": [
+                    {
+                        "n": "counts",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "shapez2.islands.Island",
+                                "int"
+                            ]
+                        },
+                        "d": "The raw island counts"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "pygamePIL",
+        "t": "module",
+        "d": "<p>The weird part of this library. The code of this library originates from <a href=\"https://github.com/tobspr-games/shapez-2-discord-bot\" target=\"_blank\">ShapeBot 2</a>, which was originally developed with pygame. To convert it to using Pillow, I created this interface which copies the pygame functions and classes used in the bot to not have to change the code too much, although as a result, some functions might not be as efficient as if they were done with Pillow directly.</p><p>This submodule doesn't contain other submodules like pygame, instead, the <code>.</code> used to access submodule objects is replaced by a <code>_</code>. If you want to do further processing on a <code>Surface</code> generated by this library, you can pass a buffer object to the <code>pygamePIL.image_save</code> function and use another library's function that can load an image from a bytes buffer. Special case : if you are using Pillow, you can use the <code>_image</code> attribute of <code>Surface</code> objects.</p><p>Thus, see the <a href=\"https://www.pygame.org/docs/\" target=\"_blank\">pygame documentation</a>.</p>",
+        "nop": true
+    },
+    {
+        "n": "research",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "Scenario",
+                "t": "class",
+                "d": "Represents an ingame scenario. This class and all the classes contained inside roughly follow the <a href=\"https://shapez2.wiki.gg/wiki/Custom_Game_Modes#Custom_Scenarios\" target=\"_blank\">scenario file format</a> except that any object that's seriallized will instead be a custom class here, so their attributes won't be documented, except for the main differences"
+            },
+            {
+                "n": "FutureUpgrade",
+                "t": "dataclass",
+                "d": "Represents an upgrade (milestone/side upgrade) that doesn't exist in the current scenario",
+                "attrs": [
+                    {
+                        "n": "id",
+                        "t": "str",
+                        "d": "The upgrade's ID"
+                    }
+                ]
+            },
+            {
+                "n": "UnlockRequirements",
+                "t": "class",
+                "d": "Replaces the <code>RequiredUpgradeIds</code> and <code>RequiredMechanicIds</code> keys of an object",
+                "attrs": [
+                    {
+                        "n": "requiredMilestones",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.research.Milestone"
+                            ]
+                        },
+                        "d": "The required milestones"
+                    },
+                    {
+                        "n": "requiredSideUpgrades",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.research.SideUpgrade"
+                            ]
+                        },
+                        "d": "The required side upgrades"
+                    },
+                    {
+                        "n": "requiredFutureUpgrades",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.research.FutureUpgrade"
+                            ]
+                        },
+                        "d": "The required future upgrades"
+                    },
+                    {
+                        "n": "requiredMechanics",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.research.Mechanic"
+                            ]
+                        },
+                        "d": "The required mechanics"
+                    }
+                ]
+            },
+            {
+                "n": "Rewards",
+                "t": "class",
+                "d": "Replaces a list of reward objects",
+                "attrs": [
+                    {
+                        "n": "buildingVariants",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.buildings.BuildingVariant"
+                            ]
+                        },
+                        "d": "The rewarded building variants"
+                    },
+                    {
+                        "n": "islandGroups",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.islands.IslandGroup"
+                            ]
+                        },
+                        "d": "The rewarded island groups"
+                    },
+                    {
+                        "n": "mechanics",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.research.Mechanic"
+                            ]
+                        },
+                        "d": "The rewarded mechanics"
+                    },
+                    {
+                        "n": "wikiEntries",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "str"
+                            ]
+                        },
+                        "d": "The rewarded knowledge panel pages"
+                    },
+                    {
+                        "n": "blueprintCurrency",
+                        "t": "int",
+                        "d": "The amount of blueprint points rewarded"
+                    },
+                    {
+                        "n": "chunkLimit",
+                        "t": "int",
+                        "d": "The amount of platform units rewarded"
+                    },
+                    {
+                        "n": "researchPoints",
+                        "t": "int",
+                        "d": "The amount of research points rewarded"
+                    },
+                    {
+                        "n": "buildingInternalVariants",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.buildings.BuildingInternalVariant"
+                            ]
+                        },
+                        "d": "The rewarded building internal variants. Not defined in the scenario but deduced from the rewarded building variants"
+                    },
+                    {
+                        "n": "islands",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.islands.Island"
+                            ]
+                        },
+                        "d": "The rewarded islands. Not defined in the scenario but deduced from the rewarded island groups"
+                    }
+                ]
+            },
+            {
+                "n": "ScenarioDecodeError",
+                "t": "class",
+                "p": "Exception",
+                "d": "The error raised if something is invalid while decoding a scenario"
+            },
+            {
+                "n": "decodeScenario",
+                "t": "func",
+                "r": {
+                    "n": "tuple",
+                    "a": [
+                        "shapez2.research.Scenario",
+                        {
+                            "n": "list",
+                            "a": [
+                                "str"
+                            ]
+                        }
+                    ]
+                },
+                "d": "Creates a scenario object from a raw string of json data. Returns a tuple of the scenario and a list of warning messages. Raises <span class=\"autolink\">research.ScenarioDecodeError</span> if the given data is invalid",
+                "params": [
+                    {
+                        "n": "rawScenario",
+                        "t": "str",
+                        "d": "The raw json data"
+                    }
+                ]
+            },
+            {
+                "n": "encodeScenario",
+                "t": "func",
+                "r": "str",
+                "d": "Encodes a scenario object into raw json data. Note : this function currently doesn't have an intended use as the modification or creation of scenario data classes is not supported",
+                "params": [
+                    {
+                        "n": "scenario",
+                        "t": "shapez2.research.Scenario",
+                        "d": "The scenario to encode"
+                    }
+                ]
+            },
+            {
+                "n": "ingameScenarios",
+                "t": {
+                    "n": "dict",
+                    "a": [
+                        "str",
+                        "shapez2.research.Scenario"
+                    ]
+                },
+                "d": "A mapping of each ingame scenario ID to its corresponding scenario object"
+            }
+        ]
+    },
+    {
+        "n": "shapeCodes",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "LAYER_SEPARATOR",
+                "t": "Literal[\":\"]",
+                "d": "The character that separates layers in shape codes"
+            },
+            {
+                "n": "EMPTY_CHAR",
+                "t": "Literal[\"-\"]",
+                "d": "The character that's used to indicate an empty shape or no color in shape codes"
+            },
+            {
+                "n": "isShapeCodeValid",
+                "t": "func",
+                "r": {
+                    "n": "tuple",
+                    "a": [
+                        "bool",
+                        [
+                            "str",
+                            "None"
+                        ],
+                        [
+                            "shapez2.gameObjects.ShapesConfiguration",
+                            "None"
+                        ]
+                    ]
+                },
+                "d": "Check if a shape code is valid. Returns a tuple with 3 elements : wether the shape code is valid, the error message or None if the shape code was valid, the shapes configuration that was used to check the shape code or None if it didn't make it to that step",
+                "params": [
+                    {
+                        "n": "potentialShapeCode",
+                        "t": "str",
+                        "d": "The shape code to check"
+                    },
+                    {
+                        "n": "shapesConfig",
+                        "t": [
+                            "shapez2.gameObjects.ShapesConfiguration",
+                            "None"
+                        ],
+                        "d": "If the shape is supposed to be in a specific shapes configuration, then that shapes config, otherwise None, which will check the shape in both ingame shapes configs and choose the first one that works"
+                    },
+                    {
+                        "n": "emptyShapeInvalid",
+                        "t": "bool",
+                        "def": "False",
+                        "d": "If the shape code represents a fully empty shape, wether or not to consider it invalid"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "shapeOperations",
+        "t": "module",
+        "d": "<p>This module contains all shape operations as functions. All of them share these properties :</p><ul><li>The first argument(s) are the input shape(s) as <span class=\"autolink\">gameObjects.Shape</span>. If there are multiple input shapes, all of them need to have the same number of parts per layer, otherwise a <span class=\"autolink\">shapeOperations.InvalidOperationInputs</span> is raised.</li><li>Then the next arguement(s) are the input color(s) as <span class=\"autolink\">gameObjects.Color</span>, if there are any.</li><li>Then the keyword only argument <code>config</code> is used to specify the <span class=\"autolink\">shapeOperations.ShapeOperationConfig</span>.</li><li>Lastly, the function returns a list of <span class=\"autolink\">gameObjects.Shape</span> for the shape outputs, no matter how many there are.</li></ul>",
+        "nop": true,
+        "attrs": [
+            {
+                "n": "InvalidOperationInputs",
+                "t": "class",
+                "p": "ValueError",
+                "d": "The error raised if a shape operation can't process some inputs"
+            },
+            {
+                "n": "ShapeOperationConfig",
+                "t": "dataclass",
+                "d": "The configuration settings that are passed to shape operations",
+                "attrs": [
+                    {
+                        "n": "maxShapeLayers",
+                        "t": "int",
+                        "d": "The maximum number of layers output shapes can have in operations that can increase the number of layers of input shapes"
+                    },
+                    {
+                        "n": "shapesConfig",
+                        "t": "shapez2.gameObjects.ShapesConfiguration",
+                        "d": "The shapes configuration that will be used for the operation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "shapeViewer",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "renderShape",
+                "t": "func",
+                "r": "shapez2.pygamePIL.Surface",
+                "d": "Renders a shape as an image",
+                "params": [
+                    {
+                        "n": "shape",
+                        "t": "shapez2.gameObjects.Shape",
+                        "d": "The shape to render"
+                    },
+                    {
+                        "n": "surfaceSize",
+                        "t": "int",
+                        "d": "What size will the returned surface be"
+                    },
+                    {
+                        "n": "colorMode",
+                        "t": "shapez2.gameObjects.ColorMode",
+                        "def": "shapez2.ingameData.DEFAULT_COLOR_SCHEME.colorModesById[\"RGB\"]",
+                        "d": "Which color mode to use to render the shape"
+                    },
+                    {
+                        "n": "shapesConfig",
+                        "t": "shapez2.gameObjects.ShapesConfiguration",
+                        "def": "shapez2.ingameData.QUAD_SHAPES_CONFIG",
+                        "d": "Which shapes configuration to use to render the shape"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "translations",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "TagType",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of a <span class=\"autolink\">translations.FeatureTag</span>",
+                "attrs": [
+                    {
+                        "n": "single",
+                        "t": "Literal[\"single\"]",
+                        "d": "A self closing tag, i.e. <code>&lt;tag/&gt;</code>"
+                    },
+                    {
+                        "n": "start",
+                        "t": "Literal[\"start\"]",
+                        "d": "An opening tag, i.e. <code>&lt;tag&gt;</code>"
+                    },
+                    {
+                        "n": "end",
+                        "t": "Literal[\"end\"]",
+                        "d": "An ending tag, i.e. <code>&lt;/tag&gt;</code>"
+                    }
+                ]
+            },
+            {
+                "n": "ValueSep",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "The type of value separator in a <span class=\"autolink\">translations.FeatureTag</span>",
+                "attrs": [
+                    {
+                        "n": "colon",
+                        "t": "Literal[\":\"]",
+                        "d": "A colon separator, i.e. <code>&lt;name:value&gt;</code>"
+                    },
+                    {
+                        "n": "equals",
+                        "t": "Literal[\"=\"]",
+                        "d": "An equals separator, i.e. <code>&lt;name=&quot;value&quot;&gt;</code>"
+                    }
+                ]
+            },
+            {
+                "n": "FeatureTag",
+                "t": "dataclass",
+                "d": "Represents a tag inside a translation string",
+                "attrs": [
+                    {
+                        "n": "type",
+                        "t": "shapez2.translations.TagType",
+                        "d": "The type of tag"
+                    },
+                    {
+                        "n": "feature",
+                        "t": "str",
+                        "d": "The name of this tag's feature"
+                    },
+                    {
+                        "n": "value",
+                        "t": [
+                            "str",
+                            "None"
+                        ],
+                        "d": "The value associated with the feature, if any"
+                    },
+                    {
+                        "n": "valueSep",
+                        "t": [
+                            "shapez2.translations.ValueSep",
+                            "None"
+                        ],
+                        "d": "The type of value separator, if there is a value"
+                    },
+                    {
+                        "n": "toString",
+                        "t": "func",
+                        "r": "str",
+                        "d": "Returns the tag's string representation"
+                    }
+                ]
+            },
+            {
+                "n": "FeatureString",
+                "t": "dataclass",
+                "d": "Represents a string with additonal styling and content modifying features using feature tags. Some rendering methods are provided with the functions listed below. For other rendering implementations, the <span class=\"autolink\">translations.FeatureString.components</span> attribute should be used",
+                "attrs": [
+                    {
+                        "n": "components",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                [
+                                    "str",
+                                    "shapez2.translations.FeatureTag"
+                                ]
+                            ]
+                        },
+                        "d": "The list of strings and feature tags composing the feature string. When the object is created, components are sanitized : empty strings are removed and adjacent strings are merged together"
+                    },
+                    {
+                        "n": "replaceParams",
+                        "t": "func",
+                        "r": "shapez2.translations.FeatureString",
+                        "d": "Returns a new feature string with parameters inside the string replaced with some values. A parameter is any feature tag that's of type <span class=\"autolink\">translations.TagType.single</span>. The <span class=\"autolink\">translations.FeatureTag.feature</span> is considered to be the parameter name",
+                        "params": [
+                            {
+                                "n": "params",
+                                "t": {
+                                    "n": "dict",
+                                    "a": [
+                                        "str",
+                                        "str"
+                                    ]
+                                },
+                                "d": "A mapping of parameter names to what string they should be replaced with. If a parameter name is present in this dictionary but not inside the feature string, it will be silently ignored"
+                            },
+                            {
+                                "n": "default",
+                                "t": [
+                                    "str",
+                                    "None"
+                                ],
+                                "d": "The string to use if the feature string contains a parameter name that's not in the <code>params</code> arguement. If None, instead a ValueError is raised when an unknown parameter is encountered"
+                            }
+                        ]
+                    },
+                    {
+                        "n": "renderToRawString",
+                        "t": "func",
+                        "r": "str",
+                        "d": "Returns a string representation of the components with feature tags included"
+                    },
+                    {
+                        "n": "renderToStringNoFeatures",
+                        "t": "func",
+                        "r": "str",
+                        "d": "Returns a concatenation of the string components without feature tags"
+                    },
+                    {
+                        "n": "renderToSurface",
+                        "t": "func",
+                        "r": "shapez2.pygamePIL.Surface",
+                        "d": "Returns an image representation of the string. New lines as well as the following tags are supported : <code>&lt;b&gt;</code>,<code>&lt;u&gt;</code>,<code>&lt;gl&gt;</code>,<code>&lt;link&gt;</code>,<code>&lt;color=&quot;#hex&quot;&gt;</code>",
+                        "params": [
+                            {
+                                "n": "font",
+                                "t": "shapez2.pygamePIL.font.Font",
+                                "d": "The font to use to render regular text"
+                            },
+                            {
+                                "n": "boldFont",
+                                "t": "shapez2.pygamePIL.font.Font",
+                                "d": "The font to use to render bold text"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "Language",
+                "t": "class",
+                "p": "enum.Enum",
+                "d": "A translation language",
+                "attrs": [
+                    {
+                        "n": "en_US",
+                        "t": "Literal[\"en-US\"]",
+                        "d": "English"
+                    }
+                ]
+            },
+            {
+                "n": "FALLBACK_LANGUAGE",
+                "t": {
+                    "n": "Literal",
+                    "a": [
+                        "shapez2.translations.Language.en_US"
+                    ]
+                },
+                "d": "The language used as a fallback when a translation doesn't exist in an other language, also used as a default value for function arguements"
+            },
+            {
+                "n": "TranslationString",
+                "t": "dataclass",
+                "d": "Represents a string that's ready to be translated",
+                "attrs": [
+                    {
+                        "n": "key",
+                        "t": "str",
+                        "d": "The translation key, for example <code>research.RNBlueprints.title</code>"
+                    },
+                    {
+                        "n": "translate",
+                        "t": "func",
+                        "r": "shapez2.translations.FeatureString",
+                        "d": "Translate the string into a given language. If it isn't found in that language, <span class=\"autolink\">translations.FALLBACK_LANGUAGE</span> is used instead. If it isn't found there either, a feature string of just the translation key is returned",
+                        "params": [
+                            {
+                                "n": "language",
+                                "t": "shapez2.translations.Language",
+                                "def": "shapez2.translations.FALLBACK_LANGUAGE",
+                                "d": "The language to translate into"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "MaybeTranslationString",
+                "t": "class",
+                "p": "shapez2.translations.TranslationString",
+                "d": "Represents a translation string coming from a source that could either be a translation key or a raw feature string",
+                "params": [
+                    {
+                        "n": "key",
+                        "t": "str",
+                        "d": "The raw source. If the string starts with <code>@</code>, what's after the <code>@</code> will be considered a translation key. Otherwise, the string will be treated as a raw feature string"
+                    }
+                ],
+                "attrs": [
+                    {
+                        "n": "key",
+                        "t": [
+                            "str",
+                            "None"
+                        ],
+                        "d": "The translation key or None if it's a raw feature string"
+                    },
+                    {
+                        "n": "rawString",
+                        "t": [
+                            "str",
+                            "None"
+                        ],
+                        "d": "The raw feature string or None if it's a regular translation string"
+                    },
+                    {
+                        "n": "translate",
+                        "t": "func",
+                        "r": "shapez2.translations.FeatureString",
+                        "d": "If a regular translation string, same as <span class=\"autolink\">translations.TranslationString.translate</span>. Otherwise, returns a feature string from <span class=\"autolink\">translations.MaybeTranslationString.rawString</span>",
+                        "params": [
+                            {
+                                "n": "language",
+                                "t": "shapez2.translations.Language",
+                                "def": "shapez2.translations.FALLBACK_LANGUAGE",
+                                "d": "The language to translate into"
+                            }
+                        ]
+                    },
+                    {
+                        "n": "getRaw",
+                        "t": "func",
+                        "r": "str",
+                        "d": "Returns the source from which this string originated, i.e. the translation key with a <code>@</code> in front or the raw feature string"
+                    }
+                ]
+            },
+            {
+                "n": "getRawTranslation",
+                "t": "func",
+                "r": "str",
+                "d": "Returns the raw string associated to a translation key in a specific language. If it isn't found in that language, <span class=\"autolink\">translations.FALLBACK_LANGUAGE</span> is used instead. If it isn't found there either, the translation key is returned",
+                "params": [
+                    {
+                        "n": "key",
+                        "t": "str",
+                        "d": "The translation key"
+                    },
+                    {
+                        "n": "language",
+                        "t": "shapez2.translations.Language",
+                        "def": "shapez2.translations.FALLBACK_LANGUAGE",
+                        "d": "The language to translate into"
+                    }
+                ]
+            },
+            {
+                "n": "featureStringFromRaw",
+                "t": "func",
+                "r": "shapez2.translations.FeatureString",
+                "d": "Returns a feature string object from a raw feature string",
+                "params": [
+                    {
+                        "n": "rawString",
+                        "t": "str",
+                        "d": "The raw feature string"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "utils",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "isNumber",
+                "t": "func",
+                "r": "bool",
+                "d": "Returns wether a string is non-empty and is composed of only digits",
+                "params": [
+                    {
+                        "n": "string",
+                        "t": "str",
+                        "d": "The string to search"
+                    }
+                ]
+            },
+            {
+                "n": "decodeStringWithLen",
+                "t": "func",
+                "r": "bytes",
+                "d": "Decode a byte string which has its length encoded as a prefix. This format is for example used in blueprints and savegames. Raises ValueError if the format is invalid",
+                "params": [
+                    {
+                        "n": "string",
+                        "t": "bytes",
+                        "d": "The string to decode"
+                    },
+                    {
+                        "n": "numBytesForLen",
+                        "t": "int",
+                        "def": "2",
+                        "d": "The number of bytes used to encode the length"
+                    },
+                    {
+                        "n": "emptyIsLengthNegative1",
+                        "t": "bool",
+                        "def": "True",
+                        "d": "Wether a length of -1 signifies a length of 0"
+                    }
+                ]
+            },
+            {
+                "n": "encodeStringWithLen",
+                "t": "func",
+                "r": "bytes",
+                "d": "Encode a byte string with its length as a prefix (see above for more details)",
+                "params": [
+                    {
+                        "n": "string",
+                        "t": "bytes",
+                        "d": "The string to encode"
+                    },
+                    {
+                        "n": "numBytesForLen",
+                        "t": "int",
+                        "def": "2",
+                        "d": "The number of bytes used to encode the length"
+                    },
+                    {
+                        "n": "emptyIsLengthNegative1",
+                        "t": "bool",
+                        "def": "True",
+                        "d": "Wether the encoded length should be changed to -1 if the string's length is 0"
+                    }
+                ]
+            },
+            {
+                "n": "Rotation",
+                "t": "dataclass",
+                "d": "Represents the rotation of something",
+                "attrs": [
+                    {
+                        "n": "value",
+                        "t": "int",
+                        "d": "The rotation value as a number, 0 means East, 1 means South, 2 means West, 3 means North"
+                    },
+                    {
+                        "n": "rotateCW",
+                        "t": "func",
+                        "r": "shapez2.utils.Rotation",
+                        "d": "Creates a new Rotation rotated 90° clockwise some number of times",
+                        "params": [
+                            {
+                                "n": "numTimes",
+                                "t": [
+                                    "int",
+                                    "shapez2.utils.Rotation"
+                                ],
+                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "FloatPos",
+                "t": "dataclass",
+                "d": "Represents a position with float coordinates",
+                "attrs": [
+                    {
+                        "n": "x",
+                        "t": "float",
+                        "d": "The X coordinate"
+                    },
+                    {
+                        "n": "y",
+                        "t": "float",
+                        "d": "The Y coordinate"
+                    },
+                    {
+                        "n": "z",
+                        "t": "float",
+                        "def": "0.0",
+                        "d": "The Z coordinate"
+                    }
+                ]
+            },
+            {
+                "n": "Pos",
+                "t": "dataclass",
+                "d": "Represents a position with integer coordinates",
+                "attrs": [
+                    {
+                        "n": "x",
+                        "t": "int",
+                        "d": "The X coordinate"
+                    },
+                    {
+                        "n": "y",
+                        "t": "int",
+                        "d": "The Y coordinate"
+                    },
+                    {
+                        "n": "z",
+                        "t": "int",
+                        "def": "0",
+                        "d": "The Z coordinate"
+                    },
+                    {
+                        "n": "rotateCW",
+                        "t": "func",
+                        "r": "shapez2.utils.Pos",
+                        "d": "Returns a new position rotated 90° clockwise some number of times",
+                        "params": [
+                            {
+                                "n": "numTimes",
+                                "t": [
+                                    "int",
+                                    "shapez2.utils.Rotation"
+                                ],
+                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                            },
+                            {
+                                "n": "aroundCenter",
+                                "t": "shapez2.utils.FloatPos",
+                                "def": "FloatPos(0,0)",
+                                "d": "The center of rotation to use"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "Size",
+                "t": "dataclass",
+                "d": "Represents the size of something",
+                "attrs": [
+                    {
+                        "n": "width",
+                        "t": "int",
+                        "d": "The width, i.e. the size on the X axis"
+                    },
+                    {
+                        "n": "height",
+                        "t": "int",
+                        "d": "The height, i.e. the size on the Y axis"
+                    },
+                    {
+                        "n": "depth",
+                        "t": "int",
+                        "def": "0",
+                        "d": "The depth, i.e. the size on the Z axis"
+                    },
+                    {
+                        "n": "rotateCW",
+                        "t": "func",
+                        "r": "shapez2.utils.Size",
+                        "d": "Creates a new Size rotated 90° clockwise some number of times",
+                        "params": [
+                            {
+                                "n": "numTimes",
+                                "t": [
+                                    "int",
+                                    "shapez2.utils.Rotation"
+                                ],
+                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "Rect",
+                "t": "dataclass",
+                "d": "Represents a rectangular area",
+                "attrs": [
+                    {
+                        "n": "topLeft",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The position of the top left corner"
+                    },
+                    {
+                        "n": "size",
+                        "t": "shapez2.utils.Size",
+                        "d": "The size of the retangle, only the width and height attributes are used"
+                    },
+                    {
+                        "n": "rotateCW",
+                        "t": "func",
+                        "r": "shapez2.utils.Rect",
+                        "d": "Returns a new rectangle rotated 90° clockwise some number of times",
+                        "params": [
+                            {
+                                "n": "numTimes",
+                                "t": [
+                                    "int",
+                                    "shapez2.utils.Rotation"
+                                ],
+                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                            },
+                            {
+                                "n": "aroundCenter",
+                                "t": "shapez2.utils.FloatPos",
+                                "def": "FloatPos(0,0)",
+                                "d": "The center of rotation to use"
+                            }
+                        ]
+                    },
+                    {
+                        "n": "containsPos",
+                        "t": "func",
+                        "r": "bool",
+                        "d": "Returns wether a position is contained inside the rectangle",
+                        "params": [
+                            {
+                                "n": "pos",
+                                "t": "shapez2.utils.Pos",
+                                "d": "The position to check"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "loadPos",
+                "t": "func",
+                "r": "shapez2.utils.Pos",
+                "d": "Creates a Pos object from a raw dictionary with <code>X</code>, <code>Y</code>, and <code>Z</code> keys, where all of them can be missing and default to 0",
+                "params": [
+                    {
+                        "n": "raw",
+                        "t": {
+                            "n": "dict",
+                            "a": [
+                                "str",
+                                "int"
+                            ]
+                        },
+                        "d": "The raw data"
+                    }
+                ]
+            },
+            {
+                "n": "DirectionType",
+                "t": "class",
+                "p": "typing.TypedDict",
+                "d": "The return type of <span class=\"autolink\">utils.loadDirection</span>",
+                "attrs": [
+                    {
+                        "n": "pos",
+                        "t": "shapez2.utils.Pos",
+                        "d": "The position"
+                    },
+                    {
+                        "n": "rot",
+                        "t": "shapez2.utils.Rotation",
+                        "d": "The rotation"
+                    }
+                ]
+            },
+            {
+                "n": "loadDirection",
+                "t": "func",
+                "r": "shapez2.utils.DirectionType",
+                "d": "Creates a direction, a direction being a rotation associated to a position. The raw data is a dictionary with a <code>Position_L</code> key for the position (same format as in <span class=\"autolink\">utils.loadPos</span>) which defaults to a <code>Pos(0,0,0)</code>, and a <code>Direction_L</code> key for the rotation which defaults to 0",
+                "params": [
+                    {
+                        "n": "raw",
+                        "t": "dict",
+                        "d": "The raw data"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "n": "versions",
+        "t": "module",
+        "attrs": [
+            {
+                "n": "GAME_VERSIONS",
+                "t": {
+                    "n": "dict",
+                    "a": [
+                        "int",
+                        {
+                            "n": "list",
+                            "a": [
+                                "str"
+                            ]
+                        }
+                    ]
+                },
+                "d": "A mapping of version numbers to the corresponding list of version IDs"
+            },
+            {
+                "n": "LATEST_GAME_VERSION",
+                "t": "int",
+                "d": "The latest game version number"
+            },
+            {
+                "n": "LATEST_MAJOR_VERSION",
+                "t": "int",
+                "d": "The latest major version number, used in blueprints"
+            },
+            {
+                "n": "AlphaSuffix",
+                "t": "dataclass",
+                "d": "Represents an alpha suffix in a <span class=\"autolink\">versions.VersionName</span>. The alpha version takes the form of <code>version.subVersion</code>",
+                "attrs": [
+                    {
+                        "n": "version",
+                        "t": "str",
+                        "d": "The main alpha version"
+                    },
+                    {
+                        "n": "subVersion",
+                        "t": [
+                            "str",
+                            "None"
+                        ],
+                        "d": "The alpha sub version or None if there isn't one"
+                    }
+                ]
+            },
+            {
+                "n": "ReleaseCandidateSuffix",
+                "t": "dataclass",
+                "d": "Represents a release candidate suffix in a <span class=\"autolink\">versions.VersionName</span>",
+                "attrs": [
+                    {
+                        "n": "number",
+                        "t": "str",
+                        "d": "The release candidate number"
+                    }
+                ]
+            },
+            {
+                "n": "PreviewSuffix",
+                "t": "dataclass",
+                "d": "Represents a preview suffix in a <span class=\"autolink\">versions.VersionName</span>",
+                "attrs": [
+                    {
+                        "n": "number",
+                        "t": "str",
+                        "d": "The preview number"
+                    }
+                ]
+            },
+            {
+                "n": "DemoSuffix",
+                "t": "class",
+                "d": "Represents a demo suffix in a <span class=\"autolink\">versions.VersionName</span>"
+            },
+            {
+                "n": "VersionName",
+                "t": "dataclass",
+                "d": "Represents the name of a version, in the form of <code>major.minor.patch-suffix1-suffix2...</code>",
+                "attrs": [
+                    {
+                        "n": "major",
+                        "t": "str",
+                        "d": "The version's major number"
+                    },
+                    {
+                        "n": "minor",
+                        "t": "str",
+                        "d": "The version's minor number"
+                    },
+                    {
+                        "n": "patch",
+                        "t": "str",
+                        "d": "The version's patch number"
+                    },
+                    {
+                        "n": "suffixes",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                [
+                                    "shapez2.versions.AlphaSuffix",
+                                    "shapez2.versions.ReleaseCandidateSuffix",
+                                    "shapez2.versions.PreviewSuffix",
+                                    "shapez2.versions.DemoSuffix"
+                                ]
+                            ]
+                        },
+                        "d": "The version's suffixes"
+                    }
+                ]
+            },
+            {
+                "n": "getVersionNameFromId",
+                "t": "func",
+                "r": "shapez2.versions.VersionName",
+                "d": "Returns a version name object from a version ID",
+                "params": [
+                    {
+                        "n": "versionId",
+                        "t": "str",
+                        "d": "The version ID"
+                    }
+                ]
+            },
+            {
+                "n": "versionNameToString",
+                "t": "func",
+                "r": "str",
+                "d": "Returns a string representation of version name object",
+                "params": [
+                    {
+                        "n": "versionName",
+                        "t": "shapez2.versions.VersionName",
+                        "d": "The version name"
+                    }
+                ]
+            }
+        ]
+    }
+]

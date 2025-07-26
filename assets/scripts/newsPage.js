@@ -130,8 +130,8 @@ function displayContent(rawContent) {
             newsLinkDiv.innerText = "No Associated Link";
         } else {
             const newsLinkAnchor = document.createElement("a");
-            newsLinkAnchor.classList.add("link")
             newsLinkAnchor.href = newsLink;
+            newsLinkAnchor.target = "_blank"
             newsLinkAnchor.innerText = "Associated Link"
             newsLinkDiv.appendChild(newsLinkAnchor);
         }
