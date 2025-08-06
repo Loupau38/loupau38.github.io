@@ -641,7 +641,7 @@
                         "n": "migrate",
                         "t": "bool",
                         "def": "False",
-                        "d": "Wether or not to run additional migration features"
+                        "d": "Whether or not to run additional migration features"
                     }
                 ]
             },
@@ -984,7 +984,7 @@
                     {
                         "n": "activated",
                         "t": "bool",
-                        "d": "Wether or not the button is activated"
+                        "d": "Whether or not the button is activated"
                     }
                 ]
             },
@@ -1853,7 +1853,7 @@
                         "n": "isEmpty",
                         "t": "func",
                         "r": "bool",
-                        "d": "Returns wether the shape is empty, i.e. wether it contains only empty parts"
+                        "d": "Returns whether the shape is empty, i.e. whether it contains only empty parts"
                     }
                 ]
             }
@@ -2316,7 +2316,7 @@
                         ]
                     ]
                 },
-                "d": "Check if a shape code is valid. Returns a tuple with 3 elements : wether the shape code is valid, the error message or None if the shape code was valid, the shapes configuration that was used to check the shape code or None if it didn't make it to that step",
+                "d": "Check if a shape code is valid. Returns a tuple with 3 elements : whether the shape code is valid, the error message or None if the shape code was valid, the shapes configuration that was used to check the shape code or None if it didn't make it to that step",
                 "params": [
                     {
                         "n": "potentialShapeCode",
@@ -2335,7 +2335,7 @@
                         "n": "emptyShapeInvalid",
                         "t": "bool",
                         "def": "False",
-                        "d": "If the shape code represents a fully empty shape, wether or not to consider it invalid"
+                        "d": "If the shape code represents a fully empty shape, whether or not to consider it invalid"
                     }
                 ]
             }
@@ -2344,7 +2344,7 @@
     {
         "n": "shapeOperations",
         "t": "module",
-        "d": "<p>This module contains all shape operations as functions. All of them share these properties :</p><ul><li>The first argument(s) are the input shape(s) as <span class=\"autolink\">gameObjects.Shape</span>. If there are multiple input shapes, all of them need to have the same number of parts per layer, otherwise a <span class=\"autolink\">shapeOperations.InvalidOperationInputs</span> is raised.</li><li>Then the next arguement(s) are the input color(s) as <span class=\"autolink\">gameObjects.Color</span>, if there are any.</li><li>Then the keyword only argument <code>config</code> is used to specify the <span class=\"autolink\">shapeOperations.ShapeOperationConfig</span>.</li><li>Lastly, the function returns a list of <span class=\"autolink\">gameObjects.Shape</span> for the shape outputs, no matter how many there are.</li></ul>",
+        "d": "<p>This module contains all shape operations as functions. All of them share these properties :</p><ul><li>The first argument(s) are the input shape(s) as <span class=\"autolink\">gameObjects.Shape</span>. If there are multiple input shapes, all of them need to have the same number of parts per layer, otherwise a <span class=\"autolink\">shapeOperations.InvalidOperationInputs</span> is raised.</li><li>Then the next argument(s) are the input color(s) as <span class=\"autolink\">gameObjects.Color</span>, if there are any.</li><li>Then the keyword only argument <code>config</code> is used to specify the <span class=\"autolink\">shapeOperations.ShapeOperationConfig</span>.</li><li>Lastly, the function returns a list of <span class=\"autolink\">gameObjects.Shape</span> for the shape outputs, no matter how many there are.</li></ul>",
         "nop": true,
         "attrs": [
             {
@@ -2533,7 +2533,7 @@
                                     "str",
                                     "None"
                                 ],
-                                "d": "The string to use if the feature string contains a parameter name that's not in the <code>params</code> arguement. If None, instead a ValueError is raised when an unknown parameter is encountered"
+                                "d": "The string to use if the feature string contains a parameter name that's not in the <code>params</code> argument. If None, instead a ValueError is raised when an unknown parameter is encountered"
                             }
                         ]
                     },
@@ -2590,7 +2590,7 @@
                         "shapez2.translations.Language.en_US"
                     ]
                 },
-                "d": "The language used as a fallback when a translation doesn't exist in an other language, also used as a default value for function arguements"
+                "d": "The language used as a fallback when a translation doesn't exist in an other language, also used as a default value for function arguments"
             },
             {
                 "n": "TranslationString",
@@ -2711,7 +2711,7 @@
                 "n": "isNumber",
                 "t": "func",
                 "r": "bool",
-                "d": "Returns wether a string is non-empty and is composed of only digits",
+                "d": "Returns whether a string is non-empty and is composed of only digits",
                 "params": [
                     {
                         "n": "string",
@@ -2741,7 +2741,7 @@
                         "n": "emptyIsLengthNegative1",
                         "t": "bool",
                         "def": "True",
-                        "d": "Wether a length of -1 signifies a length of 0"
+                        "d": "Whether a length of -1 signifies a length of 0"
                     }
                 ]
             },
@@ -2766,7 +2766,7 @@
                         "n": "emptyIsLengthNegative1",
                         "t": "bool",
                         "def": "True",
-                        "d": "Wether the encoded length should be changed to -1 if the string's length is 0"
+                        "d": "Whether the encoded length should be changed to -1 if the string's length is 0"
                     }
                 ]
             },
@@ -2946,7 +2946,7 @@
                         "n": "containsPos",
                         "t": "func",
                         "r": "bool",
-                        "d": "Returns wether a position is contained inside the rectangle",
+                        "d": "Returns whether a position is contained inside the rectangle",
                         "params": [
                             {
                                 "n": "pos",
