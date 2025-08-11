@@ -1363,6 +1363,44 @@
         ]
     },
     {
+        "n": "gameCode",
+        "t": "module",
+        "d": "This module ports over some of the ingame code originally in C#, except that if a C# class already has an equivalent python class in this library, the already existing class is used instead. All classes and functions in this module use <code>fixedint.Int32</code> instead of <code>int</code>. Only objects with notable aspects are documented below",
+        "attrs": [
+            {
+                "n": "RandomResearchShapeGenerator",
+                "t": "module",
+                "d": "The code used by the random operator shapes",
+                "attrs": [
+                    {
+                        "n": "RandomResearchShapeGenerator",
+                        "t": "class",
+                        "attrs": [
+                            {
+                                "n": "Generate",
+                                "t": "func",
+                                "r": "shapez2.gameObjects.Shape",
+                                "d": "The shape returned will be the cost to unlock the given level, so +1 from the level displayed ingame next to the shape",
+                                "params": [
+                                    {
+                                        "n": "level",
+                                        "t": "fixedint.Int32",
+                                        "d": "The level which will be unlocked by the shape"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "n": "otherClasses",
+                "t": "module",
+                "d": "Similar to <span class=\"autolink\">gameObjects</span>, holds miscellaneous classes used by the other submodules of <span class=\"autolink\">gameCode</span>"
+            }
+        ]
+    },
+    {
         "n": "gameObjects",
         "t": "module",
         "attrs": [
@@ -1693,10 +1731,16 @@
                         "t": {
                             "n": "list",
                             "a": [
-                                "shapez2.gameObjects.ShapePartType"
+                                {
+                                    "n": "tuple",
+                                    "a": [
+                                        "shapez2.gameObjects.ShapePartType",
+                                        "Literal[0, 1, 2, 3]"
+                                    ]
+                                }
                             ]
                         },
-                        "d": "The part types available in this shapes configuration"
+                        "d": "The part types available in this shapes configuration. Each list element is a tuple of the shape part type and the map generation rareness : 0 for common, 1 for rare, 2 for very rare, 3 for doesn't generate on the map"
                     }
                 ],
                 "attrs": [
@@ -1719,6 +1763,36 @@
                         "n": "crystalPart",
                         "t": "shapez2.gameObjects.ShapePartType",
                         "d": "The part type that should be considered a crystal"
+                    },
+                    {
+                        "n": "mapGenerationCommonParts",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ShapePartType"
+                            ]
+                        },
+                        "d": "The part types that are considered common when generating shape asteroids"
+                    },
+                    {
+                        "n": "mapGenerationRareParts",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ShapePartType"
+                            ]
+                        },
+                        "d": "The part types that are considered rare when generating shape asteroids"
+                    },
+                    {
+                        "n": "mapGenerationVeryRareParts",
+                        "t": {
+                            "n": "list",
+                            "a": [
+                                "shapez2.gameObjects.ShapePartType"
+                            ]
+                        },
+                        "d": "The part types that are considered very rare when generating shape asteroids"
                     },
                     {
                         "n": "parts",
@@ -2076,7 +2150,7 @@
     {
         "n": "pygamePIL",
         "t": "module",
-        "d": "<p>The weird part of this library. The code of this library originates from <a href=\"https://github.com/tobspr-games/shapez-2-discord-bot\" target=\"_blank\">ShapeBot 2</a>, which was originally developed with pygame. To convert it to using Pillow, I created this interface which copies the pygame functions and classes used in the bot to not have to change the code too much, although as a result, some functions might not be as efficient as if they were done with Pillow directly.</p><p>This submodule doesn't contain other submodules like pygame, instead, the <code>.</code> used to access submodule objects is replaced by a <code>_</code>. If you want to do further processing on a <code>Surface</code> generated by this library, you can pass a buffer object to the <code>pygamePIL.image_save</code> function and use another library's function that can load an image from a bytes buffer. Special case : if you are using Pillow, you can use the <code>_image</code> attribute of <code>Surface</code> objects.</p><p>Thus, see the <a href=\"https://www.pygame.org/docs/\" target=\"_blank\">pygame documentation</a>.</p>",
+        "d": "<p>The weird part of this library. The code of this library originates from <a href=\"https://github.com/tobspr-games/shapez-2-discord-bot\" target=\"_blank\">ShapeBot 2</a>, which was originally developed with pygame. To convert it to using Pillow, I created this interface which copies <u>some of</u> the pygame functions and classes to not have to change the code too much, although as a result, some functions might not be as efficient as if they were done with Pillow directly.</p><p>If you want to do further processing on a <code>Surface</code> generated by this library, there are 3 cases :</p><ul><li>If you are using Pillow, you can use the <code>_image</code> attribute of <code>Surface</code> objects which points to the internal <code>PIL.Image.Image</code>.</li><li>If you are using pygame, use the instruction <code>os.environ[\"SHAPEZ2_USE_PYGAME\"] = \"\"</code> before importing the shapez2 library. This will have the effect of replacing everything in the pygamePIL module with the real pygame objects. Additionally, if you have the shapez2 library listed as a dependency somewhere, you can use the optional dependency syntax <code>shapez2[pygame]</code> so that pygame will automatically be added as a dependency.</li><li>For other cases, use the <code>pygamePIL.image.save</code> function with either a file name to save it to a file, or a buffer to then load it using another library's image loading feature.</li></ul><p>Thus, see the <a href=\"https://www.pygame.org/docs/\" target=\"_blank\">pygame documentation</a>.</p>",
         "nop": true
     },
     {
@@ -2553,7 +2627,7 @@
                         "n": "renderToSurface",
                         "t": "func",
                         "r": "shapez2.pygamePIL.Surface",
-                        "d": "Returns an image representation of the string. New lines as well as the following tags are supported : <code>&lt;b&gt;</code>,<code>&lt;u&gt;</code>,<code>&lt;gl&gt;</code>,<code>&lt;link&gt;</code>,<code>&lt;color=&quot;#hex&quot;&gt;</code>",
+                        "d": "Returns an image representation of the string. New lines as well as the following tags are supported : <code>&lt;b&gt;</code>,<code>&lt;u&gt;</code>,<code>&lt;gl&gt;</code>,<code>&lt;link&gt;</code>,<code>&lt;color=&quot;#hex&quot;&gt;</code>, <code>&lt;color=&quot;named-color&quot;&gt;</code> (<a href=\"https://docs.unity3d.com/Packages/com.unity.textmeshpro@4.0/manual/RichTextColor.html\" target=\"_blank\">supported named colors</a>)",
                         "params": [
                             {
                                 "n": "font",
