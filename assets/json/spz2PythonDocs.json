@@ -1842,7 +1842,13 @@
                         "n": "toString",
                         "t": "func",
                         "r": "str",
-                        "d": "Returns the string representation of the shape part, as in a shape code"
+                        "d": "Returns the string representation of the shape part, like in a shape code"
+                    },
+                    {
+                        "n": "copy",
+                        "t": "func",
+                        "r": "shapez2.gameObjects.ShapePart",
+                        "d": "Returns a shallow copy of the shape part"
                     }
                 ]
             },
@@ -1928,6 +1934,12 @@
                         "t": "func",
                         "r": "bool",
                         "d": "Returns whether the shape is empty, i.e. whether it contains only empty parts"
+                    },
+                    {
+                        "n": "copy",
+                        "t": "func",
+                        "r": "shapez2.gameObjects.Shape",
+                        "d": "Returns a copy of the shape, with the shape parts inside also copied"
                     }
                 ]
             }
