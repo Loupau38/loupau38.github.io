@@ -1,0 +1,29 @@
+{
+    "Version": "1",
+    "UniqueId": "",
+    "Title": "",
+    "Description": "",
+    "Parameters": {
+        "ScenarioId": "",
+        "MapGenerationParameters": {
+            "FluidsSpawnPrimaryColors": false,
+            "FluidsSpawnSecondaryColors": false,
+            "FluidsSpawnTertiaryColors": false,
+            "FluidPatchLikelinessPercent": 0,
+            "FluidPatchBaseSize": 0,
+            "FluidPatchSizeGrowPercentPerChunk": 0,
+            "FluidPatchMaxSize": 0,
+            "ShapePatchLikelinessPercent": 0,
+            "ShapePatchBaseSize": 0,
+            "ShapePatchSizeGrowPercentPerChunk": 0,
+            "ShapePatchMaxSize": 0,
+            "ShapePatchShapeColorfulnessPercent": 0,
+            "ShapePatchRareShapeLikelinessPercent": 0,
+            "ShapePatchVeryRareShapeLikelinessPercent": 0,
+            "ShapePatchGenerationLikeliness": []
+        },
+        "GameRuleParameters": {
+            "RuleIds": []
+        }
+    }
+}

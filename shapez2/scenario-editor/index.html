@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapez 2 Scenario Editor</title>
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <link rel="stylesheet" href="/assets/style/scenarioEditorStyle.css">
+    <script src="/assets/scripts/allPages.js" defer></script>
+    <script src="/assets/scripts/scenarioEditorPage.js" defer></script>
+</head>
+<body>
+    <div id="top-bar">
+        <div id="back-button-container">
+            <div id="back-button"></div>
+        </div>
+        <div id="top-bar-center">
+            <h1>Shapez 2 Scenario Editor</h1>
+            <div id="tab-switch-container"></div>
+        </div>
+        <div id="top-bar-settings">
+            <label>
+                <abbr title="Ask for confirmation before deleting an object.">Deletion Confirmation</abbr>
+                <input type="checkbox" id="delete-confirm-toggle" checked>
+            </label>
+            <label>
+                <abbr title="Locally save the current scenario every time a change is made so that when you close the page, you can then return to editing the scenario when opening back the page.">Autosave</abbr>
+                <input type="checkbox" id="autosave-toggle" checked>
+            </label>
+            <label>
+                <abbr title="The color mode used to render shapes.">Color Mode</abbr>
+                <select id="color-mode-select">
+                    <option value="RGB">RGB</option>
+                    <option value="RYB">RYB</option>
+                    <option value="CMYK">CMYK</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <div id="main-content">
+        <div id="main-content-padding">
+            <p class="centered" id="loading-text">Loading...</p>
+            <div class="content-tab" id="tab-import" style="display: none;">
+                <h2 class="centered">Scenario Import</h2>
+                <p class="centered">The scenario is the main object that controls everything related to research and progression. Import a scenario to start editing it.</p>
+                <div class="import-choices-container">
+                    <div class="import-container centered-contents">
+                        <h3>From A Preset</h3>
+                        <p>Import one of the ingame scenarios.</p>
+                        <div id="scenario-preset-import-container" class="preset-import"></div>
+                    </div>
+                    <div class="import-separator">
+                        <div></div>
+                        <span>OR</span>
+                        <div></div>
+                    </div>
+                    <div class="import-container centered-contents">
+                        <h3>From A File</h3>
+                        <p>Import a scenario from a json file.</p>
+                        <input type="file" id="scenario-file-import">
+                    </div>
+                </div>
+                <div id="scenario-import-output" class="centered-contents"></div>
+                <h2 class="centered">Scenario Parameter Preset Import</h2>
+                <p class="centered">The scenario parameter preset provides default values for the map generation settings and active game rules when creating a new game with it. It also points to a scenario, meaning that it is required to have a custom scenario parameter preset alongside a custom scenario for it to be useable ingame.</p>
+                <div class="import-choices-container">
+                    <div class="import-container centered-contents">
+                        <h3>From A Preset</h3>
+                        <p>Import one of the ingame scenario parameter presets.</p>
+                        <div id="scenario-pp-preset-import-container" class="preset-import"></div>
+                    </div>
+                    <div class="import-separator">
+                        <div></div>
+                        <span>OR</span>
+                        <div></div>
+                    </div>
+                    <div class="import-container centered-contents">
+                        <h3>From A File</h3>
+                        <p>Import a scenario parameter preset from a json file.</p>
+                        <input type="file" id="scenario-pp-file-import">
+                    </div>
+                </div>
+                <div id="scenario-pp-import-output" class="centered-contents"></div>
+                <h2 class="centered">How To Use</h2>
+                <p class="centered">Use one of the options above to load a scenario, then start editing it by navigating to the different tabs with the buttons at the top. Starting with the 'Config' tab is recommended.</p>
+                <p class="centered">Hover over elements to get more information on their purpose : buttons generally have a tooltip, text with a dotted underline means it has a tooltip.</p>
+                <p class="centered">Some inputs can be either in 'suggested value mode' or 'custom value mode'. The suggested value will be based on other values in the scenario, while the custom value will let you enter anything. Use the 💡/⚙️ button to switch between them.</p>
+                <p class="centered">This app use an autosave feature, hover over its setting in the top right and head to the 'Export' tab to know more.</p>
+            </div>
+            <div class="content-tab" id="tab-config" style="display: none;"></div>
+            <div class="content-tab" id="tab-milestones" style="display: none;"></div>
+            <div class="content-tab" id="tab-tasks" style="display: none;"></div>
+            <div class="content-tab" id="tab-upgrades" style="display: none;"></div>
+            <div class="content-tab" id="tab-operatorLevel" style="display: none;"></div>
+            <div class="content-tab" id="tab-mechanics" style="display: none;"></div>
+            <div class="content-tab" id="tab-paramPreset" style="display: none;"></div>
+            <div class="content-tab" id="tab-problems" style="display: none;">
+                <p id="errors-display-header" style="display: none;">Your scenario has errors, it might not load ingame :</p>
+                <ul id="errors-display-container"></ul>
+                <p id="warnings-display-header" style="display: none;">Your scenario has warnings, it might not behave as expected when loaded ingame :</p>
+                <ul id="warnings-display-container"></ul>
+            </div>
+            <div class="content-tab" id="tab-export" style="display: none;">
+                <div class="centered-contents">
+                    <h2>Scenario Export</h2>
+                    <p>Put the downloaded file inside the <code>custom-scenarios</code> folder of the <abbr title="You can access it by for example clicking the 'Show Folder' button in the 'Play' menu ingame and going in the parent folder of the folder that just opened.">game data folder</abbr>.</p>
+                    <input type="button" value="Export Scenario" id="scenario-export">
+                    <h2>Scenario Parameter Preset Export</h2>
+                    <p>You will also need the parameter preset for your scenario to work ingame. Put the downloaded file inside the <code>custom-scenario-parameter-presets</code> folder of the game data folder.</p>
+                    <input type="button" value="Export Scenario Parameter Preset" id="scenario-pp-export">
+                    <h2>Autosave Clear</h2>
+                    <p>You can remove the current locally saved scenario if you don't want it to show up the next time you use this app. The autosave is also automatically removed when you load a scenario from the 'Import' tab.</p>
+                    <input type="button" value="Remove Scenario Autosave" id="scenario-autosave-remove">
+                    <input type="button" value="Remove Scenario Parameter Preset Autosave" id="scenario-pp-autosave-remove">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

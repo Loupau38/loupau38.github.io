@@ -1,0 +1,858 @@
+[
+    {
+        "id": "ShapeMinerExtractorsGroup",
+        "name": "Shape Miner",
+        "islands": [
+            {
+                "id": "Layout_ShapeMiner",
+                "name": "Shape Miner"
+            }
+        ]
+    },
+    {
+        "id": "ShapeMinerChainsGroup",
+        "name": "Shape Miner Extension",
+        "islands": [
+            {
+                "id": "Layout_ShapeMinerExtension",
+                "name": "Shape Miner Extension"
+            }
+        ]
+    },
+    {
+        "id": "FluidMinerExtractorsGroup",
+        "name": "Fluid Miner",
+        "islands": [
+            {
+                "id": "Layout_FluidMiner",
+                "name": "Fluid Miner"
+            }
+        ]
+    },
+    {
+        "id": "FluidMinerChainsGroup",
+        "name": "Fluid Miner Extension",
+        "islands": [
+            {
+                "id": "Layout_FluidMinerExtension",
+                "name": "Fluid Miner Extension"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_1x1",
+        "name": "1x1 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_1x1",
+                "name": "1x1 Foundation"
+            },
+            {
+                "id": "Foundation_1x1_Flipped",
+                "name": "1x1 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_1x2",
+        "name": "1x2 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_1x2",
+                "name": "1x2 Foundation"
+            },
+            {
+                "id": "Foundation_1x2_Flipped",
+                "name": "1x2 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_1x3",
+        "name": "1x3 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_1x3",
+                "name": "1x3 Foundation"
+            },
+            {
+                "id": "Foundation_1x3_Flipped",
+                "name": "1x3 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_1x4",
+        "name": "1x4 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_1x4",
+                "name": "1x4 Foundation"
+            },
+            {
+                "id": "Foundation_1x4_Flipped",
+                "name": "1x4 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_2x2",
+        "name": "2x2 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_2x2",
+                "name": "2x2 Foundation"
+            },
+            {
+                "id": "Foundation_2x2_Flipped",
+                "name": "2x2 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_2x3",
+        "name": "2x3 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_2x3",
+                "name": "2x3 Foundation"
+            },
+            {
+                "id": "Foundation_2x3_Flipped",
+                "name": "2x3 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_2x4",
+        "name": "2x4 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_2x4",
+                "name": "2x4 Foundation"
+            },
+            {
+                "id": "Foundation_2x4_Flipped",
+                "name": "2x4 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_3x3",
+        "name": "3x3 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_3x3",
+                "name": "3x3 Foundation"
+            },
+            {
+                "id": "Foundation_3x3_Flipped",
+                "name": "3x3 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_T4",
+        "name": "T4 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_T4",
+                "name": "T4 Foundation"
+            },
+            {
+                "id": "Foundation_T4_Flipped",
+                "name": "T4 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_L3",
+        "name": "L3 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_L3",
+                "name": "L3 Foundation"
+            },
+            {
+                "id": "Foundation_L3_Flipped",
+                "name": "L3 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_L4",
+        "name": "L4 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_L4",
+                "name": "L4 Foundation"
+            },
+            {
+                "id": "Foundation_L4_Flipped",
+                "name": "L4 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_S4",
+        "name": "S4 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_S4",
+                "name": "S4 Foundation"
+            },
+            {
+                "id": "Foundation_S4_Flipped",
+                "name": "S4 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "FoundationGroup_C5",
+        "name": "C5 Foundation",
+        "islands": [
+            {
+                "id": "Foundation_C5",
+                "name": "C5 Foundation"
+            },
+            {
+                "id": "Foundation_C5_Flipped",
+                "name": "C5 Foundation (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "RailLiftUp1X1X2Group",
+        "name": "Rail Up 1 Floor",
+        "islands": [
+            {
+                "id": "Layout_RailLiftUp1X1X2",
+                "name": "Rail"
+            }
+        ]
+    },
+    {
+        "id": "RailLiftDown1X1X2Group",
+        "name": "Rail Down 1 Floor",
+        "islands": [
+            {
+                "id": "Layout_RailLiftDown1X1X2",
+                "name": "Rail"
+            }
+        ]
+    },
+    {
+        "id": "RailLiftUp1X1X3Group",
+        "name": "Rail Up 2 Floors",
+        "islands": [
+            {
+                "id": "Layout_RailLiftUp1X1X3",
+                "name": "Rail"
+            }
+        ]
+    },
+    {
+        "id": "RailLiftDown1X1X3Group",
+        "name": "Rail Down 2 Floors",
+        "islands": [
+            {
+                "id": "Layout_RailLiftDown1X1X3",
+                "name": "Rail"
+            }
+        ]
+    },
+    {
+        "id": "TrainLaunchersGroup",
+        "name": "Train Launcher",
+        "islands": [
+            {
+                "id": "Layout_TrainLauncher",
+                "name": "Train Launcher"
+            }
+        ]
+    },
+    {
+        "id": "TrainCatchersGroup",
+        "name": "Train Catcher",
+        "islands": [
+            {
+                "id": "Layout_TrainCatcher",
+                "name": "Train Catcher"
+            }
+        ]
+    },
+    {
+        "id": "TrainShapeLoadersGroup",
+        "name": "Shape Loader",
+        "islands": [
+            {
+                "id": "Layout_TrainLoader_Shapes",
+                "name": "Shape Loader"
+            },
+            {
+                "id": "Layout_TrainLoader_Shapes_Flipped",
+                "name": "Shape Loader (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "TrainShapeUnloadersGroup",
+        "name": "Shape Unloader",
+        "islands": [
+            {
+                "id": "Layout_TrainUnloader_Shapes",
+                "name": "Shape Unloader"
+            },
+            {
+                "id": "Layout_TrainUnloader_Shapes_Flipped",
+                "name": "Shape Unloader (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "TrainShapeTransferGroup",
+        "name": "Shape Wagon Transfer",
+        "islands": [
+            {
+                "id": "Layout_TrainTransfer_Shape",
+                "name": "Shape Wagon Transfer"
+            },
+            {
+                "id": "Layout_TrainTransfer_Shape_Flipped",
+                "name": "Shape Wagon Transfer (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "TrainFluidLoadersGroup",
+        "name": "Fluid Loader",
+        "islands": [
+            {
+                "id": "Layout_TrainLoader_Fluids",
+                "name": "Fluid Loader"
+            },
+            {
+                "id": "Layout_TrainLoader_Fluids_Flipped",
+                "name": "Fluid Loader (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "TrainFluidUnloadersGroup",
+        "name": "Fluid Unloader",
+        "islands": [
+            {
+                "id": "Layout_TrainUnloader_Fluids",
+                "name": "Fluid Unloader"
+            },
+            {
+                "id": "Layout_TrainUnloader_Fluids_Flipped",
+                "name": "Fluid Unloader (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "TrainFluidTransferGroup",
+        "name": "Fluid Wagon Transfer",
+        "islands": [
+            {
+                "id": "Layout_TrainTransfer_Fluid",
+                "name": "Fluid Wagon Transfer"
+            },
+            {
+                "id": "Layout_TrainTransfer_Fluid_Flipped",
+                "name": "Fluid Wagon Transfer (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "TrainQuickStationsGroup",
+        "name": "Quick Stop",
+        "islands": [
+            {
+                "id": "Layout_TrainQuickStation",
+                "name": "Quick Stop"
+            }
+        ]
+    },
+    {
+        "id": "TrainWaitStationsGroup",
+        "name": "Wait Stop",
+        "islands": [
+            {
+                "id": "Layout_TrainWaitStation",
+                "name": "Wait Stop"
+            }
+        ]
+    },
+    {
+        "id": "ShapeCargoFactoriesGroup",
+        "name": "Shape Wagon",
+        "islands": [
+            {
+                "id": "Layout_TrainShapeWagonExtension",
+                "name": "Shape Wagon"
+            }
+        ]
+    },
+    {
+        "id": "FluidCargoFactoriesGroup",
+        "name": "Fluid Wagon",
+        "islands": [
+            {
+                "id": "Layout_TrainFluidWagonExtension",
+                "name": "Fluid Wagon"
+            }
+        ]
+    },
+    {
+        "id": "FillerCargoFactoriesGroup",
+        "name": "Filler Wagon",
+        "islands": [
+            {
+                "id": "Layout_TrainFillerWagonExtension",
+                "name": "Filler Wagon"
+            }
+        ]
+    },
+    {
+        "id": "TrainTwistersGroup",
+        "name": "Rail Twister",
+        "islands": [
+            {
+                "id": "Layout_TrainTwister",
+                "name": "Rail Twister"
+            }
+        ]
+    },
+    {
+        "id": "TrainLoopsGroup",
+        "name": "Rail Loop",
+        "islands": [
+            {
+                "id": "Layout_TrainRollerCoasterLoop",
+                "name": "Rail Loop"
+            },
+            {
+                "id": "Layout_TrainRollerCoasterLoop_Flipped",
+                "name": "Rail Loop (Mirrored)"
+            }
+        ]
+    },
+    {
+        "id": "RailLiftUp2X1X2Group",
+        "name": "Long Rail Up",
+        "islands": [
+            {
+                "id": "Layout_RailLiftUp2X1X2",
+                "name": "Long Rail Up"
+            }
+        ]
+    },
+    {
+        "id": "RailLiftDown2X1X2Group",
+        "name": "Long Rail Down",
+        "islands": [
+            {
+                "id": "Layout_RailLiftDown2X1X2",
+                "name": "Long Rail Down"
+            }
+        ]
+    },
+    {
+        "id": "HUB",
+        "name": "Vortex",
+        "islands": [
+            {
+                "id": "Layout_HUB",
+                "name": "Vortex"
+            }
+        ]
+    },
+    {
+        "id": "SpaceBeltsGroup",
+        "name": "Space Belt",
+        "islands": [
+            {
+                "id": "SpaceBelt_Forward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_LeftTurn",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_RightTurn",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_LeftFwdSplitter",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_RightFwdSplitter",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_YSplitter",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_TripleSplitter",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_RightFwdMerger",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_LeftFwdMerger",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_YMerger",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_TripleMerger",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1UpForward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1UpLeft",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1UpRight",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1UpBackward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1DownForward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1DownLeft",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1DownRight",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift1DownBackward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2UpForward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2UpLeft",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2UpRight",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2UpBackward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2DownForward",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2DownLeft",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2DownRight",
+                "name": "Space Belt"
+            },
+            {
+                "id": "SpaceBelt_Lift2DownBackward",
+                "name": "Space Belt"
+            }
+        ]
+    },
+    {
+        "id": "SpacePipesGroup",
+        "name": "Space Pipe",
+        "islands": [
+            {
+                "id": "SpacePipe_Forward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_LeftTurn",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_RightTurn",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_LeftFwdSplitter",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_RightFwdSplitter",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_YSplitter",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_TripleSplitter",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_RightFwdMerger",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_LeftFwdMerger",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_YMerger",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_TripleMerger",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1UpForward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1UpLeft",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1UpRight",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1UpBackward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1DownForward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1DownLeft",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1DownRight",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift1DownBackward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2UpForward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2UpLeft",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2UpRight",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2UpBackward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2DownForward",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2DownLeft",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2DownRight",
+                "name": "Space Pipe"
+            },
+            {
+                "id": "SpacePipe_Lift2DownBackward",
+                "name": "Space Pipe"
+            }
+        ]
+    },
+    {
+        "id": "RedRailGroup",
+        "name": "Red Rail Configurator",
+        "islands": [
+            {
+                "id": "Rail_Forward",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_LeftTurn",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_RightTurn",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_LeftFwdSplitter",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_RightFwdSplitter",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_YSplitter",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_YSplitterFlipped",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_TripleSplitter",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_TripleSplitterFlipped",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_RightFwdMerger",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_LeftFwdMerger",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_YMerger",
+                "name": "Rail"
+            },
+            {
+                "id": "Rail_TripleMerger",
+                "name": "Rail"
+            }
+        ]
+    },
+    {
+        "id": "RedTrainProducerGroup",
+        "name": "Red Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_Red",
+                "name": "Red Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "BlueTrainProducerGroup",
+        "name": "Blue Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_Blue",
+                "name": "Blue Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "GreenTrainProducerGroup",
+        "name": "Green Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_Green",
+                "name": "Green Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "WhiteTrainProducerGroup",
+        "name": "White Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_White",
+                "name": "White Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "CyanTrainProducerGroup",
+        "name": "Cyan Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_Cyan",
+                "name": "Cyan Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "MagentaTrainProducerGroup",
+        "name": "Magenta Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_Magenta",
+                "name": "Magenta Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "YellowTrainProducerGroup",
+        "name": "Yellow Locomotive",
+        "islands": [
+            {
+                "id": "Layout_TrainProducer_Yellow",
+                "name": "Yellow Locomotive"
+            }
+        ]
+    },
+    {
+        "id": "BlueRailGroup",
+        "name": "Blue Rail Configurator",
+        "islands": []
+    },
+    {
+        "id": "CyanRailGroup",
+        "name": "Cyan Rail Configurator",
+        "islands": []
+    },
+    {
+        "id": "GreenRailGroup",
+        "name": "Green Rail Configurator",
+        "islands": []
+    },
+    {
+        "id": "MagentaRailGroup",
+        "name": "Magenta Rail Configurator",
+        "islands": []
+    },
+    {
+        "id": "WhiteRailGroup",
+        "name": "White Rail Configurator",
+        "islands": []
+    },
+    {
+        "id": "YellowRailGroup",
+        "name": "Yellow Rail Configurator",
+        "islands": []
+    }
+]
