@@ -1,10 +1,3 @@
-.centered > * {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-}
-
 #shapeCode {
     margin-top: 50px;
     margin-bottom: 5px;
@@ -23,20 +16,6 @@
 
 canvas {
     margin-top: 30px;
-}
-
-input, canvas, select {
     border: 2px solid rgb(127, 127, 127);
     border-radius: 5px;
-}
-
-input, select {
-    font-family: monospace;
-    outline: unset;
-    background-color: rgb(70, 70, 70);
-    color: white;
-}
-
-input:focus, select:focus {
-    border-color: var(--accent-color);
 }

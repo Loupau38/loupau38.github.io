@@ -80,7 +80,7 @@ function displayContent(rawContent) {
         langsOnlyDiv.appendChild(langsOnlyHeaderDiv);
 
         const newsLangsOnly = newsItem["LanguagesOnly"];
-        if (newsLangsOnly == undefined || newsLangsOnly.length == 0) {
+        if (newsLangsOnly === undefined || newsLangsOnly.length === 0) {
             langsOnlyHeaderDiv.innerText += " All";
         } else {
             newsLangsOnly.forEach((lang) => {
@@ -102,7 +102,7 @@ function displayContent(rawContent) {
         versionsOnlyDiv.appendChild(versionsOnlyHeaderDiv);
 
         const newsVersionsOnly = newsItem["GameVersionsOnly"];
-        if (newsVersionsOnly == undefined || newsVersionsOnly.length == 0) {
+        if (newsVersionsOnly === undefined || newsVersionsOnly.length === 0) {
             versionsOnlyHeaderDiv.innerText += " All";
         } else {
             newsVersionsOnly.forEach((lang) => {
@@ -126,7 +126,7 @@ function displayContent(rawContent) {
         newsLinkDiv.classList.add("newsLink");
 
         const newsLink = newsItem["Link"];
-        if (newsLink == undefined) {
+        if (newsLink === undefined) {
             newsLinkDiv.innerText = "No Associated Link";
         } else {
             const newsLinkAnchor = document.createElement("a");

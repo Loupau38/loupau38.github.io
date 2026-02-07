@@ -10,16 +10,16 @@ const libraryName = "shapez2";
  */
 function createElem(elemType,elemClass=null,elemText=null,elemId=null,children=null) {
     const elem = document.createElement(elemType);
-    if (elemClass != null) {
+    if (elemClass !== null) {
         elem.classList.add(elemClass);
     }
-    if (elemText != null) {
+    if (elemText !== null) {
         elem.innerText = elemText;
     }
-    if (elemId != null) {
+    if (elemId !== null) {
         elem.id = elemId;
     }
-    if (children != null) {
+    if (children !== null) {
         for (const child of children) {
             elem.appendChild(child);
         }
@@ -32,12 +32,12 @@ function createElem(elemType,elemClass=null,elemText=null,elemId=null,children=n
  * @returns {HTMLAnchorElement|HTMLSpanElement}
 */
 function getTypeLink(elemType) {
-    if (typeof elemType == "object") {
-        if (elemType.n == null) {
+    if (typeof elemType === "object") {
+        if (elemType.n === undefined) {
             const finalElems = [];
             for (let i = 0; i < elemType.length; i++) {
                 const elem = elemType[i];
-                if (i != 0) {
+                if (i !== 0) {
                     finalElems.push(createElem("span",null," | "));
                 }
                 finalElems.push(getTypeLink(elem));
@@ -47,7 +47,7 @@ function getTypeLink(elemType) {
             const finalElems = [];
             for (let i = 0; i < elemType.a.length; i++) {
                 const elem = elemType.a[i];
-                if (i != 0) {
+                if (i !== 0) {
                     finalElems.push(createElem("span",null,", "));
                 }
                 finalElems.push(getTypeLink(elem));
@@ -115,7 +115,7 @@ function processElem(elemObj,elemPath,fromModule) {
         infoContainer.appendChild(createElem("p",null,"\u24d8 This class is mutable."));
     }
 
-    if (elemObj.d != null) {
+    if (elemObj.d !== undefined) {
         const elemDesc = createElem("p");
         elemDesc.innerHTML = elemObj.d;
         if (!elemObj.nop) {
@@ -128,7 +128,7 @@ function processElem(elemObj,elemPath,fromModule) {
     const elemName = elemObj.n;
 
     let transferredModuleName;
-    if (elemType == "module") {
+    if (elemType === "module") {
         transferredModuleName = elemName;
     } else {
         transferredModuleName = null;
@@ -136,13 +136,13 @@ function processElem(elemObj,elemPath,fromModule) {
 
     const paramReprs = [];
 
-    if (elemObj.params != null) {
+    if (elemObj.params !== undefined) {
 
         const paramsContainer = document.createElement("ul");
 
         for (const paramObj of elemObj.params) {
 
-            if (paramObj == "*") {
+            if (paramObj === "*") {
                 paramReprs.push(createElem("span",null,"*"));
                 continue;
             }
@@ -159,7 +159,7 @@ function processElem(elemObj,elemPath,fromModule) {
             const paramRepr = document.createElement("span");
             paramRepr.appendChild(createElem("span",null,`${paramNameRaw}: `));
             paramRepr.appendChild(getTypeLink(paramType));
-            if (paramDefaultRaw != null) {
+            if (paramDefaultRaw !== undefined) {
                 paramRepr.appendChild(createElem("span",null," = "));
                 paramRepr.appendChild(getTypeLink(paramDefaultRaw));
             }
@@ -180,7 +180,7 @@ function processElem(elemObj,elemPath,fromModule) {
         infoContainer.appendChild(paramsContainer);
     }
 
-    if (elemObj.attrs != null) {
+    if (elemObj.attrs !== undefined) {
 
         const attrsContainer = document.createElement("div");
         const attrsNames = [];
@@ -200,16 +200,16 @@ function processElem(elemObj,elemPath,fromModule) {
             }
 
             const attrHeader = document.createElement("span");
-            if (transferredModuleName != null) {
+            if (transferredModuleName !== null) {
                 attrHeader.appendChild(createElem("span",null,attrsPath.join(".")+"."));
             }
             attrHeader.appendChild(createElem("span",null,`${attrNameRaw}: `));
             attrHeader.appendChild(getTypeLink(attrType));
-            if (attrDefaultRaw != null) {
+            if (attrDefaultRaw !== undefined) {
                 attrHeader.appendChild(createElem("span",null," = "));
                 attrHeader.appendChild(getTypeLink(attrDefaultRaw));
             }
-            if (elemType == "dataclass") {
+            if (elemType === "dataclass") {
                 paramReprs.push(attrHeader.cloneNode(true));
             }
 
@@ -224,8 +224,8 @@ function processElem(elemObj,elemPath,fromModule) {
             attrsContainer.appendChild(attrDesc);
         }
 
-        if (elemType != "module") {
-            infoContainer.appendChild(createElem("h3",null,`${elemType == "dataclass" ? "Parameters/" : ""}Attributes`));
+        if (elemType !== "module") {
+            infoContainer.appendChild(createElem("h3",null,`${elemType === "dataclass" ? "Parameters/" : ""}Attributes`));
             attrsContainer.classList.add("indented");
         }
 
@@ -236,7 +236,7 @@ function processElem(elemObj,elemPath,fromModule) {
         infoContainer.appendChild(attrsContainer);
     }
 
-    if (elemType == "module") {
+    if (elemType === "module") {
 
         const moduleName = elemPath.concat(elemName).join(".");
         elemFullInfoContainer.appendChild(createElem("h2",null,moduleName,moduleName));
@@ -246,16 +246,16 @@ function processElem(elemObj,elemPath,fromModule) {
         const elemId = elemPath.concat(elemName).join(".");
         const elemHeader = createElem("div","code-def",null,elemId);
 
-        elemHeader.appendChild(createElem("span","italics",elemType == "func" ? "def" : elemType))
-        elemHeader.appendChild(createElem("span",null,` ${fromModule == null ? elemName : elemId}(`));
+        elemHeader.appendChild(createElem("span","italics",elemType === "func" ? "def" : elemType))
+        elemHeader.appendChild(createElem("span",null,` ${fromModule === null ? elemName : elemId}(`));
 
-        if ((elemType == "class") && (elemObj.p != null) && (elemObj.params == null)) {
+        if ((elemType === "class") && (elemObj.p !== undefined) && (elemObj.params === undefined)) {
             elemHeader.appendChild(getTypeLink(elemObj.p));
         } else {
 
             for (let paramIndex = 0; paramIndex < paramReprs.length; paramIndex++) {
                 const paramRepr = paramReprs[paramIndex];
-                if (paramIndex != 0) {
+                if (paramIndex !== 0) {
                     elemHeader.appendChild(createElem("span",null,", "));
                 }
                 elemHeader.appendChild(paramRepr);
@@ -275,7 +275,7 @@ function processElem(elemObj,elemPath,fromModule) {
 
         elemFullInfoContainer.appendChild(elemHeader);
 
-        if ((elemType == "class") && (elemObj.p != null) && (elemObj.params != null)) {
+        if ((elemType === "class") && (elemObj.p !== undefined) && (elemObj.params !== undefined)) {
             infoContainer.insertAdjacentElement("afterbegin",createElem("p",null,null,null,[
                 createElem("span",null,"\u24d8 This class inherits from "),
                 createElem("span","code-def",null,null,[getTypeLink(elemObj.p)])

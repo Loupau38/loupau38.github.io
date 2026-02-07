@@ -4,12 +4,17 @@
 }
 
 :root {
-    --main-color : white;
-    --accent-color: blue;
+    --main-color : rgb(255, 255, 255);
+    --accent-color: rgb(0, 0, 255);
+    --bg-color: rgb(50, 50, 50);
+    --input-border-color: rgb(127, 127, 127);
+    --highlight-color-1: rgb(70, 70, 70);
+    --highlight-color-2: rgb(100, 100, 100);
+    --highlight-color-3: rgb(125, 125, 125);
 }
 
 body {
-    background: rgb(50, 50, 50);
+    background-color: var(--bg-color);
     margin: 0;
     font-family: "Barlow", sans-serif;
     color: var(--main-color);
@@ -19,17 +24,13 @@ h1 {
     margin-left: 10%;
 }
 
-.mono-space-num {
-    font-variant-numeric: tabular-nums;
-}
-
 .no-link-style {
     text-decoration: none;
     color: var(--main-color);
 }
 
 .content-box {
-    background: rgb(100, 100, 100);
+    background-color: var(--highlight-color-2);
     display: block;
     width: 80%;
     margin: 20px auto;
@@ -51,7 +52,7 @@ h1 {
 }
 
 .clickable-content-box:hover {
-    background: rgb(125, 125, 125);
+    background: var(--highlight-color-3);
 }
 
 a {
@@ -64,7 +65,7 @@ a:hover {
     color: var(--main-color);
 }
 
-#backButton {
+#back-button {
     text-decoration: none;
     float: left;
     color: var(--main-color);
@@ -73,6 +74,50 @@ a:hover {
     margin-left: 10px;
 }
 
-#backButton:hover {
+#back-button:hover {
     color: var(--accent-color);
+}
+
+.centered, .centered-contents > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+input, select, textarea, button {
+    border: 2px solid var(--input-border-color);
+    border-radius: 5px;
+    font-family: monospace;
+    outline: unset;
+    background-color: var(--highlight-color-1);
+    color: var(--main-color);
+}
+
+input:hover, input:focus-visible,
+select:hover, select:focus-visible,
+textarea:hover, textarea:focus-visible,
+button:hover, button:focus-visible {
+    background-color: var(--highlight-color-2);
+}
+
+input:focus-visible:not([type="button"],[type="file"]),
+select:focus-visible,
+textarea:focus-visible {
+    border: 2px solid var(--accent-color);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent-color);
+}
+
+input[type="checkbox"]:focus-visible {
+    filter: brightness(80%);
+}
+
+code {
+    background-color: rgb(40, 40, 40);
+    padding: 2px;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 5px;
 }

@@ -1,6 +1,63 @@
 const quadShapesConfig = "quad";
 const hexShapesConfig = "hex";
 
+const shapeTypes = {
+    "quad" : {
+        "color" : ["C","R","S","W","c"],
+        "nocolor" : ["P","-"]
+    },
+    "hex" : {
+        "color" : ["H","G","F","c"],
+        "nocolor" : ["P","-"]
+    }
+};
+
+/**
+ * @param {string} shapeCode
+ * @param {"quad"|"hex"} shapesConfig
+ */
+export function isShapeCodeValid(shapeCode,shapesConfig) {
+    const layers = shapeCode.split(":");
+    const layersLen = layers[0].length;
+    for (let layerIndex = 0; layerIndex < layers.length; layerIndex++) {
+        const layer = layers[layerIndex];
+        if (layer === "") {
+            return {valid:false,msg:`Layer ${layerIndex+1} is empty`};
+        }
+        if (layer.length%2 !== 0) {
+            return {valid:false,msg:`Layer ${layerIndex+1} doesn't have an even length`};
+        }
+        if (layer.length !== layersLen) {
+            return {valid:false,msg:`Layer ${layerIndex+1} isn't the expected length (${layersLen})`};
+        }
+        let nextIsColor;
+        for (let charIndex = 0; charIndex < layer.length; charIndex++) {
+            const char = layer[charIndex];
+            if (charIndex%2 === 0) {
+                if (shapeTypes[shapesConfig]["color"].includes(char)) {
+                    nextIsColor = true;
+                } else if (shapeTypes[shapesConfig]["nocolor"].includes(char)) {
+                    nextIsColor = false;
+                } else {
+                    return {valid:false,msg:`Invalid shape : ${char}`};
+                }
+            } else {
+                if (nextIsColor) {
+                    if (!(char in shapeViewer.baseColors)) {
+                        return {valid:false,msg:`Invalid color : ${char}`};
+                    }
+                } else {
+                    if (char !== "-") {
+                        return {valid:false,msg:`Color in layer ${layerIndex+1} at character ${charIndex+1} must be '-'`};
+                    }
+                }
+            }
+            
+        }
+    }
+    return {valid:true,msg:""};
+}
+
 export const baseColors = {
     "u" : "rgb(164,158,165)",
     "r" : "rgb(255,0,0)",
@@ -92,7 +149,7 @@ function drawPolygon(ctx,points) {
 
 function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,borderScale) {
 
-    const drawShadow = layerIndex != 0;
+    const drawShadow = layerIndex !== 0;
     const color = colorValues[colorMode][partColor];
     const curBorderSize = borderSize/borderScale;
 
@@ -113,11 +170,11 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         ];
     }
 
-    if (partShape == "-") {
+    if (partShape === "-") {
         return [(() => {}),(() => {})]
     }
 
-    if (partShape == "C") {
+    if (partShape === "C") {
         function drawPath() {
             ctx.beginPath();
             ctx.moveTo(0,1);
@@ -127,7 +184,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "R") {
+    if (partShape === "R") {
         function drawPath() {
             ctx.beginPath();
             ctx.rect(0,0,1,1);
@@ -136,7 +193,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "S") {
+    if (partShape === "S") {
         function drawPath() {
             ctx.beginPath();
             ctx.moveTo(1,0);
@@ -148,7 +205,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "W") {
+    if (partShape === "W") {
         const sideLength = 1 / 3.75;
         function drawPath() {
             ctx.beginPath();
@@ -162,7 +219,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "H") {
+    if (partShape === "H") {
         function drawPath() {
             ctx.beginPath();
             ctx.moveTo(0,0);
@@ -173,7 +230,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "F") {
+    if (partShape === "F") {
         const semicircleRadius = (3-sqrt3) / 4;
         const triangleSideLength = 2 * semicircleRadius;
         const semicircleCenterX = (triangleSideLength*(sqrt3/2)) / 2;
@@ -194,7 +251,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "G") {
+    if (partShape === "G") {
         function drawPath() {
             ctx.beginPath();
             ctx.moveTo(0,0);
@@ -206,13 +263,13 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         return standardDraw(drawPath);
     }
 
-    if (partShape == "P") {
+    if (partShape === "P") {
         let pinCenterX;
         let pinCenterY;
-        if (shapesConfig == quadShapesConfig) {
+        if (shapesConfig === quadShapesConfig) {
             pinCenterX = 1/3;
             pinCenterY = 2/3;
-        } else if (shapesConfig == hexShapesConfig) {
+        } else if (shapesConfig === hexShapesConfig) {
             pinCenterX = sqrt2 / 6;
             pinCenterY = 1 - (sqrt6/6);
         }
@@ -236,10 +293,10 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
         ];
     }
 
-    if (partShape == "c") {
+    if (partShape === "c") {
         const darkenedColor = darkenColor(color);
-        if (shapesConfig == quadShapesConfig) {
-            const darkenedAreasOffset = layerIndex%2 == 0 ? 0 : 22.5;
+        if (shapesConfig === quadShapesConfig) {
+            const darkenedAreasOffset = layerIndex%2 === 0 ? 0 : 22.5;
             const startAngle1 = radians(360-(67.5-darkenedAreasOffset));
             const stopAngle1 = radians(360-(90-darkenedAreasOffset));
             const startAngle2 = radians(360-(22.5-darkenedAreasOffset));
@@ -272,7 +329,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
                 }),
                 (() => {})
             ];
-        } else if (shapesConfig == hexShapesConfig) {
+        } else if (shapesConfig === hexShapesConfig) {
             const points = [
                 [0,0],
                 [sqrt3/2,0.5],
@@ -285,7 +342,7 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
             ];
             const sideMiddlePoint = [(points[0][0]+points[1][0])/2,(points[0][1]+points[1][1])/2];
             let darkenedArea;
-            if (layerIndex%2 == 0){
+            if (layerIndex%2 === 0){
                 darkenedArea = [points[0],sideMiddlePoint,points[2]];
             } else {
                 darkenedArea = [sideMiddlePoint,points[1],points[2]];
@@ -324,6 +381,13 @@ function rotateContext(ctx,partIndex,numParts) {
     ctx.translate(0,-1);
 }
 
+/**
+ * @param {CanvasRenderingContext2D} context
+ * @param {number} size
+ * @param {string} shapeCode
+ * @param {"quad"|"hex"} shapesConfig
+ * @param {"rgb"|"ryb"|"cmyk"} colorMode
+ */
 export function renderShape(context,size,shapeCode,shapesConfig,colorMode) {
 
     const layers = shapeCode.split(":");
