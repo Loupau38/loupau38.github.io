@@ -43,7 +43,7 @@ export function isShapeCodeValid(shapeCode,shapesConfig) {
                 }
             } else {
                 if (nextIsColor) {
-                    if (!(char in shapeViewer.baseColors)) {
+                    if (!(char in colorValues["rgb"])) {
                         return {valid:false,msg:`Invalid color : ${char}`};
                     }
                 } else {
