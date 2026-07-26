@@ -3,7 +3,7 @@ const hexShapesConfig = "hex";
 
 const shapeTypes = {
     "quad" : {
-        "color" : ["C","R","S","W","c"],
+        "color" : ["C","R","S","W","c","X","Y"],
         "nocolor" : ["P","-"]
     },
     "hex" : {
@@ -52,7 +52,6 @@ export function isShapeCodeValid(shapeCode,shapesConfig) {
                     }
                 }
             }
-            
         }
     }
     return {valid:true,msg:""};
@@ -214,6 +213,33 @@ function renderPart(ctx,partShape,partColor,layerIndex,shapesConfig,colorMode,bo
             ctx.arc(1.4,-0.4,1.18,Math.PI*0.89,Math.PI*0.61,true);
             ctx.lineTo(1,1);
             ctx.lineTo(0,1);
+            ctx.closePath();
+        }
+        return standardDraw(drawPath);
+    }
+
+	if (partShape === "X") {
+        function drawPath() {
+            ctx.beginPath();
+            ctx.moveTo(1,0.5);
+            ctx.lineTo(0.5,1);
+            ctx.lineTo(0,1);
+            ctx.lineTo(0,0.5);
+            ctx.lineTo(0.5,0);
+            ctx.closePath();
+        }
+        return standardDraw(drawPath);
+    }
+
+    if (partShape === "Y") {
+        function drawPath() {
+            ctx.beginPath();
+            ctx.moveTo(1,0.5);
+            ctx.lineTo(0.5,1);
+            ctx.lineTo(0,1);
+            ctx.lineTo(0,0.5);
+            ctx.lineTo(0.5,0);
+            ctx.lineTo(0.5,0.5);
             ctx.closePath();
         }
         return standardDraw(drawPath);
