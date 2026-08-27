@@ -125,7 +125,7 @@
                         "n": "decode",
                         "t": "classmethod",
                         "r": "shapez2.blueprints.BlueprintIcon",
-                        "d": "Create a <span class=\"autolink\">blueprints.BlueprintIcon</span> from an encoded string",
+                        "d": "Create a [[blueprints.BlueprintIcon]] from an encoded string",
                         "params": [
                             {
                                 "n": "raw",
@@ -177,7 +177,7 @@
                             "None"
                         ],
                         "def": "None",
-                        "d": "The building's extra data. If None, then the default extra data for that building type will be used if it exists. If a <span class=\"autolink\">blueprintsExtraData.BuildingExtraData</span>, a <span class=\"autolink\">blueprintsExtraData.BuildingExtraDataHolder</span> will be created out of it"
+                        "d": "The building's extra data. If None, then the default extra data for that building type will be used if it exists. If a [[blueprintsExtraData.BuildingExtraData]], a [[blueprintsExtraData.BuildingExtraDataHolder]] will be created out of it"
                     }
                 ],
                 "attrs": [
@@ -347,7 +347,7 @@
                             "None"
                         ],
                         "def": "None",
-                        "d": "The island's extra data. If None, then the default extra data for that island type will be used if it exists. If a <span class=\"autolink\">blueprintsExtraData.IslandExtraData</span>, a <span class=\"autolink\">blueprintsExtraData.IslandExtraDataHolder</span> will be created out of it"
+                        "d": "The island's extra data. If None, then the default extra data for that island type will be used if it exists. If a [[blueprintsExtraData.IslandExtraData]], a [[blueprintsExtraData.IslandExtraDataHolder]] will be created out of it"
                     },
                     {
                         "n": "buildingBP",
@@ -575,7 +575,7 @@
                         "n": "getCost",
                         "t": "func",
                         "r": "int",
-                        "d": "Returns the blueprint points cost of placing the blueprint with a 'copy/paste cost' of 100%. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if an OverflowError happens in the computation"
+                        "d": "Returns the blueprint points cost of placing the blueprint with a 'copy/paste cost' of 100%. Raises [[blueprints.BlueprintError]] if an OverflowError happens in the computation"
                     },
                     {
                         "n": "getIslandUnitCost",
@@ -616,7 +616,7 @@
                 "n": "getBlueprintVersion",
                 "t": "func",
                 "r": "int",
-                "d": "Does as little as possible of the decoding process and returns the blueprint's version. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if the blueprint format is invalid",
+                "d": "Does as little as possible of the decoding process and returns the blueprint's version. Raises [[blueprints.BlueprintError]] if the blueprint format is invalid",
                 "params": [
                     {
                         "n": "blueprint",
@@ -629,7 +629,7 @@
                 "n": "decodeBlueprint",
                 "t": "func",
                 "r": "shapez2.blueprints.Blueprint",
-                "d": "<p>Creates a blueprint object from a blueprint code. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if the blueprint format is invalid or it contains invalid data. When <code>migrate</code> is False, runs the same migration features as ingame. When True, also runs additional migration features :</p><ul><li>If an entry type is invalid, the entry is ignored instead of raising an error.</li><li>If the blueprint's version is less than 1024 (alpha 8), default stackers (which were changed from straight to bent in that update) are changed to straight stackers.</li><li>If the blueprint's version is less than 1119 (0.1.0-pre2), global wire transmitters are turned into global signal transmitters and global wire receivers that weren't set to a ROS channel get turned into global signal receivers.</li><li>For the rest of the migration features see <a href=\"https://github.com/Loupau38/shapez-2-tools/blob/main/bp%20fixer/README.md\" target=\"_blank\">here</a>.</li></ul>",
+                "d": "<p>Creates a blueprint object from a blueprint code. Raises [[blueprints.BlueprintError]] if the blueprint format is invalid or it contains invalid data. When <code>migrate</code> is False, runs the same migration features as ingame. When True, also runs additional migration features :</p><ul><li>If an entry type is invalid, the entry is ignored instead of raising an error.</li><li>If the blueprint's version is less than 1024 (alpha 8), default stackers (which were changed from straight to bent in that update) are changed to straight stackers.</li><li>If the blueprint's version is less than 1119 (0.1.0-pre2), global wire transmitters are turned into global signal transmitters and global wire receivers that weren't set to a ROS channel get turned into global signal receivers.</li><li>For the rest of the migration features see <a href=\"https://github.com/Loupau38/shapez-2-tools/blob/main/bp%20fixer/README.md\" target=\"_blank\">here</a>.</li></ul>",
                 "nop": true,
                 "params": [
                     {
@@ -704,7 +704,7 @@
                 "n": "ShapeGeneratorType",
                 "t": "class",
                 "p": "enum.Enum",
-                "d": "The type of a <span class=\"autolink\">blueprintsExtraData.ShapeGenerator</span>",
+                "d": "The type of a [[blueprintsExtraData.ShapeGenerator]]",
                 "attrs": [
                     {
                         "n": "empty",
@@ -721,7 +721,7 @@
             {
                 "n": "ShapeGenerator",
                 "t": "class",
-                "d": "Represents a shape generator, used in <span class=\"autolink\">blueprintsExtraData.SignalProducerExtraData</span> and <span class=\"autolink\">blueprintsExtraData.ItemProducerExtraData</span>",
+                "d": "Represents a shape generator, used in [[blueprintsExtraData.SignalProducerExtraData]] and [[blueprintsExtraData.ItemProducerExtraData]]",
                 "params": [
                     {
                         "n": "genType",
@@ -755,7 +755,7 @@
                 "n": "FluidGeneratorType",
                 "t": "class",
                 "p": "enum.Enum",
-                "d": "The type of a <span class=\"autolink\">blueprintsExtraData.FluidGenerator</span>",
+                "d": "The type of a [[blueprintsExtraData.FluidGenerator]]",
                 "attrs": [
                     {
                         "n": "empty",
@@ -772,7 +772,7 @@
             {
                 "n": "FluidGenerator",
                 "t": "class",
-                "d": "Represents a fluid generator, used in <span class=\"autolink\">blueprintsExtraData.SignalProducerExtraData</span> and <span class=\"autolink\">blueprintsExtraData.FluidProducerExtraData</span>",
+                "d": "Represents a fluid generator, used in [[blueprintsExtraData.SignalProducerExtraData]] and [[blueprintsExtraData.FluidProducerExtraData]]",
                 "params": [
                     {
                         "n": "genType",
@@ -806,7 +806,7 @@
                 "n": "SignalGeneratorType",
                 "t": "class",
                 "p": "enum.Enum",
-                "d": "The type of signal generated by a <span class=\"autolink\">blueprintsExtraData.SignalProducerExtraData</span>",
+                "d": "The type of signal generated by a [[blueprintsExtraData.SignalProducerExtraData]]",
                 "attrs": [
                     {
                         "n": "empty",
@@ -844,7 +844,7 @@
                 "n": "CompareMode",
                 "t": "class",
                 "p": "enum.Enum",
-                "d": "The mode of a comparison gate, used in <span class=\"autolink\">blueprintsExtraData.ComparisonGateExtraData</span>",
+                "d": "The mode of a comparison gate, used in [[blueprintsExtraData.ComparisonGateExtraData]]",
                 "attrs": [
                     {
                         "n": "Equal",
@@ -1179,7 +1179,7 @@
                     "shapez2.blueprintsExtraData.IslandExtraData",
                     "None"
                 ],
-                "d": "Decodes extra data from raw bytes and returns the custom class result or None if the entry isn't supposed to have extra data. Raises <span class=\"autolink\">blueprints.BlueprintError</span> if the raw bytes data format is invalid",
+                "d": "Decodes extra data from raw bytes and returns the custom class result or None if the entry isn't supposed to have extra data. Raises [[blueprints.BlueprintError]] if the raw bytes data format is invalid",
                 "params": [
                     {
                         "n": "rawDecoded",
@@ -1396,7 +1396,7 @@
             {
                 "n": "otherClasses",
                 "t": "module",
-                "d": "Similar to <span class=\"autolink\">gameObjects</span>, holds miscellaneous classes used by the other submodules of <span class=\"autolink\">gameCode</span>"
+                "d": "Similar to [[gameObjects]], holds miscellaneous classes used by the other submodules of [[gameCode]]"
             }
         ]
     },
@@ -1643,7 +1643,7 @@
                         "n": "getMixResult",
                         "t": "func",
                         "r": "shapez2.gameObjects.Color",
-                        "d": "Returns the result of mixing two colors. Abstracts the creation of a frozenset for the <span class=\"autolink\">gameObjects.ColorScheme.mixingRecipes</span> attribute",
+                        "d": "Returns the result of mixing two colors. Abstracts the creation of a frozenset for the [[gameObjects.ColorScheme.mixingRecipes]] attribute",
                         "params": [
                             {
                                 "n": "color1",
@@ -2336,7 +2336,7 @@
                         }
                     ]
                 },
-                "d": "Creates a scenario object from a raw string of json data. Returns a tuple of the scenario and a list of warning messages. Raises <span class=\"autolink\">research.ScenarioDecodeError</span> if the given data is invalid",
+                "d": "Creates a scenario object from a raw string of json data. Returns a tuple of the scenario and a list of warning messages. Raises [[research.ScenarioDecodeError]] if the given data is invalid",
                 "params": [
                     {
                         "n": "rawScenario",
@@ -2430,7 +2430,7 @@
     {
         "n": "shapeOperations",
         "t": "module",
-        "d": "<p>This module contains all shape operations as functions. All of them share these properties :</p><ul><li>The first argument(s) are the input shape(s) as <span class=\"autolink\">gameObjects.Shape</span>. If there are multiple input shapes, all of them need to have the same number of parts per layer, otherwise a <span class=\"autolink\">shapeOperations.InvalidOperationInputs</span> is raised.</li><li>Then the next argument(s) are the input color(s) as <span class=\"autolink\">gameObjects.Color</span>, if there are any.</li><li>Then the keyword only argument <code>config</code> is used to specify the <span class=\"autolink\">shapeOperations.ShapeOperationConfig</span>.</li><li>Lastly, the function returns a list of <span class=\"autolink\">gameObjects.Shape</span> for the shape outputs, even if there is only one.</li></ul>",
+        "d": "<p>This module contains all shape operations as functions. All of them share these properties :</p><ul><li>The first argument(s) are the input shape(s) as [[gameObjects.Shape]]. If there are multiple input shapes, all of them need to have the same number of parts per layer, otherwise a [[shapeOperations.InvalidOperationInputs]] is raised.</li><li>Then the next argument(s) are the input color(s) as [[gameObjects.Color]], if there are any.</li><li>Then the keyword only argument <code>config</code> is used to specify the [[shapeOperations.ShapeOperationConfig]].</li><li>Lastly, the function returns a list of [[gameObjects.Shape]] for the shape outputs, even if there is only one.</li></ul>",
         "nop": true,
         "attrs": [
             {
@@ -2502,7 +2502,7 @@
                 "n": "TagType",
                 "t": "class",
                 "p": "enum.Enum",
-                "d": "The type of a <span class=\"autolink\">translations.FeatureTag</span>",
+                "d": "The type of a [[translations.FeatureTag]]",
                 "attrs": [
                     {
                         "n": "single",
@@ -2525,7 +2525,7 @@
                 "n": "ValueSep",
                 "t": "class",
                 "p": "enum.Enum",
-                "d": "The type of value separator in a <span class=\"autolink\">translations.FeatureTag</span>",
+                "d": "The type of value separator in a [[translations.FeatureTag]]",
                 "attrs": [
                     {
                         "n": "colon",
@@ -2581,7 +2581,7 @@
             {
                 "n": "FeatureString",
                 "t": "dataclass",
-                "d": "Represents a string with additonal styling and content modifying features using feature tags. Some rendering methods are provided with the functions listed below. For other rendering implementations, the <span class=\"autolink\">translations.FeatureString.components</span> attribute should be used",
+                "d": "Represents a string with additonal styling and content modifying features using feature tags. Some rendering methods are provided with the functions listed below. For other rendering implementations, the [[translations.FeatureString.components]] attribute should be used",
                 "attrs": [
                     {
                         "n": "components",
@@ -2600,7 +2600,7 @@
                         "n": "replaceParams",
                         "t": "func",
                         "r": "shapez2.translations.FeatureString",
-                        "d": "Returns a new feature string with parameters inside the string replaced with some values. A parameter is any feature tag that's of type <span class=\"autolink\">translations.TagType.single</span>. The <span class=\"autolink\">translations.FeatureTag.feature</span> is considered to be the parameter name",
+                        "d": "Returns a new feature string with parameters inside the string replaced with some values. A parameter is any feature tag that's of type [[translations.TagType.single]]. The [[translations.FeatureTag.feature]] is considered to be the parameter name",
                         "params": [
                             {
                                 "n": "params",
@@ -2692,7 +2692,7 @@
                         "n": "translate",
                         "t": "func",
                         "r": "shapez2.translations.FeatureString",
-                        "d": "Translate the string into a given language. If it isn't found in that language, <span class=\"autolink\">translations.FALLBACK_LANGUAGE</span> is used instead. If it isn't found there either, a feature string of just the translation key is returned",
+                        "d": "Translate the string into a given language. If it isn't found in that language, [[translations.FALLBACK_LANGUAGE]] is used instead. If it isn't found there either, a feature string of just the translation key is returned",
                         "params": [
                             {
                                 "n": "language",
@@ -2737,7 +2737,7 @@
                         "n": "translate",
                         "t": "func",
                         "r": "shapez2.translations.FeatureString",
-                        "d": "If a regular translation string, same as <span class=\"autolink\">translations.TranslationString.translate</span>. Otherwise, returns a feature string from <span class=\"autolink\">translations.MaybeTranslationString.rawString</span>",
+                        "d": "If a regular translation string, same as [[translations.TranslationString.translate]]. Otherwise, returns a feature string from [[translations.MaybeTranslationString.rawString]]",
                         "params": [
                             {
                                 "n": "language",
@@ -2759,7 +2759,7 @@
                 "n": "getRawTranslation",
                 "t": "func",
                 "r": "str",
-                "d": "Returns the raw string associated to a translation key in a specific language. If it isn't found in that language, <span class=\"autolink\">translations.FALLBACK_LANGUAGE</span> is used instead. If it isn't found there either, the translation key is returned",
+                "d": "Returns the raw string associated to a translation key in a specific language. If it isn't found in that language, [[translations.FALLBACK_LANGUAGE]] is used instead. If it isn't found there either, the translation key is returned",
                 "params": [
                     {
                         "n": "key",
@@ -2878,7 +2878,7 @@
                                     "int",
                                     "shapez2.utils.Rotation"
                                 ],
-                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                                "d": "The number of times to rotate clockwise. If a Rotation, the [[utils.Rotation.value]] is used"
                             }
                         ]
                     }
@@ -2940,7 +2940,7 @@
                                     "int",
                                     "shapez2.utils.Rotation"
                                 ],
-                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                                "d": "The number of times to rotate clockwise. If a Rotation, the [[utils.Rotation.value]] is used"
                             },
                             {
                                 "n": "aroundCenter",
@@ -2985,7 +2985,7 @@
                                     "int",
                                     "shapez2.utils.Rotation"
                                 ],
-                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                                "d": "The number of times to rotate clockwise. If a Rotation, the [[utils.Rotation.value]] is used"
                             }
                         ]
                     }
@@ -3018,7 +3018,7 @@
                                     "int",
                                     "shapez2.utils.Rotation"
                                 ],
-                                "d": "The number of times to rotate clockwise. If a Rotation, the <span class=\"autolink\">utils.Rotation.value</span> is used"
+                                "d": "The number of times to rotate clockwise. If a Rotation, the [[utils.Rotation.value]] is used"
                             },
                             {
                                 "n": "aroundCenter",
@@ -3066,7 +3066,7 @@
                 "n": "DirectionType",
                 "t": "class",
                 "p": "typing.TypedDict",
-                "d": "The return type of <span class=\"autolink\">utils.loadDirection</span>",
+                "d": "The return type of [[utils.loadDirection]]",
                 "attrs": [
                     {
                         "n": "pos",
@@ -3084,7 +3084,7 @@
                 "n": "loadDirection",
                 "t": "func",
                 "r": "shapez2.utils.DirectionType",
-                "d": "Creates a direction, a direction being a rotation associated to a position. The raw data is a dictionary with a <code>Position_L</code> key for the position (same format as in <span class=\"autolink\">utils.loadPos</span>) which defaults to a <code>Pos(0,0,0)</code>, and a <code>Direction_L</code> key for the rotation which defaults to 0",
+                "d": "Creates a direction, a direction being a rotation associated to a position. The raw data is a dictionary with a <code>Position_L</code> key for the position (same format as in [[utils.loadPos]]) which defaults to a <code>Pos(0,0,0)</code>, and a <code>Direction_L</code> key for the rotation which defaults to 0",
                 "params": [
                     {
                         "n": "raw",
@@ -3128,7 +3128,7 @@
             {
                 "n": "AlphaSuffix",
                 "t": "dataclass",
-                "d": "Represents an alpha suffix in a <span class=\"autolink\">versions.VersionName</span>. The alpha version takes the form of <code>version.subVersion</code>",
+                "d": "Represents an alpha suffix in a [[versions.VersionName]]. The alpha version takes the form of <code>version.subVersion</code>",
                 "attrs": [
                     {
                         "n": "version",
@@ -3148,7 +3148,7 @@
             {
                 "n": "ReleaseCandidateSuffix",
                 "t": "dataclass",
-                "d": "Represents a release candidate suffix in a <span class=\"autolink\">versions.VersionName</span>",
+                "d": "Represents a release candidate suffix in a [[versions.VersionName]]",
                 "attrs": [
                     {
                         "n": "number",
@@ -3160,7 +3160,7 @@
             {
                 "n": "PreviewSuffix",
                 "t": "dataclass",
-                "d": "Represents a preview suffix in a <span class=\"autolink\">versions.VersionName</span>",
+                "d": "Represents a preview suffix in a [[versions.VersionName]]",
                 "attrs": [
                     {
                         "n": "number",
@@ -3172,7 +3172,7 @@
             {
                 "n": "DemoSuffix",
                 "t": "class",
-                "d": "Represents a demo suffix in a <span class=\"autolink\">versions.VersionName</span>"
+                "d": "Represents a demo suffix in a [[versions.VersionName]]"
             },
             {
                 "n": "VersionName",
